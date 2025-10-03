@@ -1,116 +1,79 @@
+
 "use client";
 
 import { BigShoulders } from "@/app/ui/fonts";
 import { useRef, useState, useEffect } from "react";
 import { ReactCompareSlider } from "react-compare-slider";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 
-function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
+function SplitVideo({ videoLeftSrc, videoRightSrc }) {
   const leftVideoRef = useRef(null);
   const rightVideoRef = useRef(null);
   const [position, setPosition] = useState(50);
-  const [isLeftPlaying, setIsLeftPlaying] = useState(true); // Start playing by default
-  const [isRightPlaying, setIsRightPlaying] = useState(true); // Start playing by default
   const [isMobile, setIsMobile] = useState(false);
   const [currentImage, setCurrentImage] = useState("left");
-  const [autoInterval, setAutoInterval] = useState(null);
 
   // Detect screen size (mobile and tablet)
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 1024); // Include tablets (up to 1024px)
+      setIsMobile(window.innerWidth <= 1024);
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Auto-slide effect for mobile and tablet
+  // Play videos and keep them in sync for desktop
   useEffect(() => {
-    if (isMobile && !isLeftPlaying && !isRightPlaying && autoInterval === null) {
-      const interval = setInterval(() => {
-        setCurrentImage((prev) => (prev === "left" ? "right" : "left"));
-      }, 3000); // Change every 3 seconds
-      setAutoInterval(interval);
-    } else if ((!isMobile || isLeftPlaying || isRightPlaying) && autoInterval !== null) {
-      clearInterval(autoInterval);
-      setAutoInterval(null);
-    }
+    if (!isMobile) {
+      const leftVideo = leftVideoRef.current;
+      const rightVideo = rightVideoRef.current;
 
-    return () => {
-      if (autoInterval) {
-        clearInterval(autoInterval);
+      if (leftVideo && rightVideo) {
+        const playVideos = async () => {
+          try {
+            await Promise.all([
+              leftVideo.play().catch((error) => console.error("Left video play failed:", error)),
+              rightVideo.play().catch((error) => console.error("Right video play failed:", error)),
+            ]);
+          } catch (error) {
+            console.error("Video playback error:", error);
+          }
+        };
+
+        playVideos();
+
+        const syncVideos = () => {
+          if (Math.abs(leftVideo.currentTime - rightVideo.currentTime) > 0.1) {
+            rightVideo.currentTime = leftVideo.currentTime;
+          }
+        };
+
+        leftVideo.addEventListener("timeupdate", syncVideos);
+        return () => leftVideo.removeEventListener("timeupdate", syncVideos);
       }
-    };
-  }, [isMobile, isLeftPlaying, isRightPlaying, autoInterval]);
-
-  // Auto-play videos on mount and keep them in sync
-  useEffect(() => {
-    const leftVideo = leftVideoRef.current;
-    const rightVideo = rightVideoRef.current;
-
-    if (leftVideo && rightVideo) {
-      leftVideo.play().catch((error) => console.error("Left video play failed:", error));
-      rightVideo.play().catch((error) => console.error("Right video play failed:", error));
-
-      // Keep videos in sync
-      const syncVideos = () => {
-        if (Math.abs(leftVideo.currentTime - rightVideo.currentTime) > 0.1) {
-          rightVideo.currentTime = leftVideo.currentTime;
-        }
-      };
-
-      leftVideo.addEventListener("timeupdate", syncVideos);
-      return () => {
-        leftVideo.removeEventListener("timeupdate", syncVideos);
-      };
     }
-  }, []);
+  }, [isMobile]);
 
-  // Handle slider position change (desktop only)
+  // Handle video playback for mobile (play active, pause inactive)
+  useEffect(() => {
+    if (isMobile) {
+      const activeVideo = currentImage === "left" ? leftVideoRef.current : rightVideoRef.current;
+      const inactiveVideo = currentImage === "left" ? rightVideoRef.current : leftVideoRef.current;
+
+      if (activeVideo) {
+        activeVideo.play().catch((error) => console.error("Active video play failed:", error));
+      }
+      if (inactiveVideo) {
+        inactiveVideo.pause();
+      }
+    }
+  }, [currentImage, isMobile]);
+
   const handlePositionChange = (newPosition) => {
     setPosition(newPosition);
-  };
-
-  // Handle video toggle for mobile and tablet
-  const handleVideoToggle = () => {
-    if (currentImage === "left") {
-      if (isLeftPlaying) {
-        setIsLeftPlaying(false);
-        if (leftVideoRef.current) leftVideoRef.current.pause();
-      } else {
-        setIsLeftPlaying(true);
-        setIsRightPlaying(false);
-        if (leftVideoRef.current) leftVideoRef.current.play();
-        if (rightVideoRef.current) rightVideoRef.current.pause();
-      }
-    } else {
-      if (isRightPlaying) {
-        setIsRightPlaying(false);
-        if (rightVideoRef.current) rightVideoRef.current.pause();
-      } else {
-        setIsRightPlaying(true);
-        setIsLeftPlaying(false);
-        if (rightVideoRef.current) rightVideoRef.current.play();
-        if (leftVideoRef.current) leftVideoRef.current.pause();
-      }
-    }
-  };
-
-  // Pagination navigation for mobile
-  const handleNext = () => {
-    setCurrentImage(currentImage === "left" ? "right" : "left");
-    setIsLeftPlaying(true);
-    setIsRightPlaying(true);
-    if (leftVideoRef.current) leftVideoRef.current.play();
-    if (rightVideoRef.current) rightVideoRef.current.play();
-  };
-
-  const handlePrev = () => {
-    setCurrentImage(currentImage === "left" ? "right" : "left");
-    setIsLeftPlaying(true);
-    setIsRightPlaying(true);
-    if (leftVideoRef.current) leftVideoRef.current.play();
-    if (rightVideoRef.current) rightVideoRef.current.play();
   };
 
   const CustomHandle = () => (
@@ -126,13 +89,11 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
         justifyContent: "center",
       }}
     >
-      <div>
-        <img src="/SubtractRed.svg" alt="logo" width="30" height="30" style={{ display: "block" }} />
-      </div>
+      <img src="/SubtractRed.svg" alt="logo" width="30" height="30" style={{ display: "block" }} />
     </div>
   );
 
-  // Mobile and tablet view
+  // Mobile and tablet view with Swiper
   if (isMobile) {
     return (
       <div
@@ -146,7 +107,6 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
           overflow: "hidden",
         }}
       >
-        {/* Overlay text */}
         <div
           style={{
             position: "absolute",
@@ -156,26 +116,35 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
             color: "white",
             textAlign: "center",
             pointerEvents: "none",
-            display: isLeftPlaying || isRightPlaying ? "none" : "block",
             zIndex: 10,
             width: "100%",
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
           }}
         >
-          <div className={`${BigShoulders}`} style={{ fontSize: "2rem", fontWeight: "bold" }}>CREATIVIDAD SIN LÍMITES</div>
+          <div className={`${BigShoulders}`} style={{ fontSize: "96px", fontWeight: "bold" }}>
+            CREATIVIDAD SIN LÍMITES
+          </div>
         </div>
 
-        {/* Image and Video Content */}
-        <div
-          style={{
-            width: "100vw",
-            height: "100vh",
-            position: "relative",
-            overflow: "hidden",
-          }}
+        <Swiper
+          direction="vertical"
+          slidesPerView={1}
+          spaceBetween={0}
+          speed={1000}
+          touchReleaseOnEdges={true}
+          mousewheel={{ releaseOnEdges: true }}
+          onSlideChange={(swiper) => setCurrentImage(swiper.activeIndex === 0 ? "left" : "right")}
+          style={{ width: "100vw", height: "100vh" }}
         >
-          {currentImage === "left" ? (
-            <>
+          <SwiperSlide>
+            <div
+              style={{
+                width: "100vw",
+                height: "100vh",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
               <video
                 ref={leftVideoRef}
                 src={videoLeftSrc}
@@ -190,24 +159,19 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
                 loop
                 muted
                 playsInline
+                preload="auto"
               />
-              <img
-                src={posterLeft}
-                alt="Poster left"
-                style={{
-                  width: "100vw",
-                  height: "100vh",
-                  objectFit: "cover",
-                  display: isLeftPlaying ? "none" : "block",
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  cursor: "pointer",
-                }}
-              />
-            </>
-          ) : (
-            <>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              style={{
+                width: "100vw",
+                height: "100vh",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
               <video
                 ref={rightVideoRef}
                 src={videoRightSrc}
@@ -222,68 +186,12 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
                 loop
                 muted
                 playsInline
+                preload="auto"
               />
-              <img
-                src={posterRight}
-                alt="Poster right"
-                style={{
-                  width: "100vw",
-                  height: "100vh",
-                  objectFit: "cover",
-                  display: isRightPlaying ? "none" : "block",
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  cursor: "pointer",
-                }}
-              />
-            </>
-          )}
-        </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
 
-        {/* Slider Controls (Vertical bar) */}
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "20px",
-            transform: "translateY(-50%)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "10px",
-            zIndex: 10,
-          }}
-        >
-          <button
-            onClick={handlePrev}
-            style={{
-              width: "5px",
-              height: "60px",
-              borderRadius: "28px",
-              backgroundColor: currentImage === "right" ? "rgba(255, 255, 255, 0.5)" : "#D9D9D9",
-              border: "none",
-              cursor: "pointer",
-              transition: "background-color 0.3s",
-            }}
-            aria-label="Previous image"
-          />
-          <button
-            onClick={handleNext}
-            style={{
-              width: "5px",
-              height: "60px",
-              borderRadius: "28px",
-              backgroundColor: currentImage === "right" ? "#D9D9D9" : "rgba(255, 255, 255, 0.5)",
-              border: "none",
-              cursor: "pointer",
-              transition: "background-color 0.3s",
-            }}
-            aria-label="Next image"
-          />
-        </div>
-
-        {/* Bottom Info Bar */}
         <div
           style={{
             position: "absolute",
@@ -297,7 +205,6 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
             pointerEvents: "none",
           }}
         >
-          {/* Left: Subtract img + Name */}
           <div
             style={{
               display: "flex",
@@ -323,67 +230,12 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
               {currentImage === "left" ? "Art" : "Corp"}
             </span>
           </div>
-
-          {/* Right: Play/Close icon button */}
-          <button
-            onClick={handleVideoToggle}
-            style={{
-              backgroundColor: "transparent",
-              padding: "8px",
-              borderRadius: "4px",
-              cursor: "pointer",
-              pointerEvents: "auto",
-              transition: "all 0.3s",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = "transparent";
-            }}
-            aria-label={
-              (currentImage === "left" && isLeftPlaying) || (currentImage === "right" && isRightPlaying)
-                ? "Stop video"
-                : "Play video"
-            }
-          >
-            <span
-              style={{
-                color: "white",
-                fontSize: "1rem",
-                fontWeight: "bold",
-                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
-                display: "inline-block",
-              }}
-            >
-              {(currentImage === "left" && isLeftPlaying) || (currentImage === "right" && isRightPlaying)
-                ? ""
-                : "VER"}
-            </span>
-            <img
-              src={
-                (currentImage === "left" && isLeftPlaying) || (currentImage === "right" && isRightPlaying)
-                  ? "/close-icon.svg"
-                  : "/flecha.svg"
-              }
-              alt={
-                (currentImage === "left" && isLeftPlaying) || (currentImage === "right" && isRightPlaying)
-                  ? "Close video"
-                  : "Play video"
-              }
-              style={{ width: "24px", height: "24px", display: "block" }}
-            />
-          </button>
         </div>
       </div>
     );
   }
 
-  // Desktop view: ReactCompareSlider
+  // Desktop view
   return (
     <div
       style={{
@@ -396,7 +248,6 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
         overflow: "hidden",
       }}
     >
-      {/* Overlay text */}
       <div
         style={{
           position: "absolute",
@@ -411,10 +262,11 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
           textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
         }}
       >
-        <div className={`${BigShoulders} font-bold text-[66px] leading-none tracking-normal uppercase`}>CREATIVIDAD SIN LÍMITES</div>
+        <div className={`${BigShoulders} font-bold text-[66px] leading-none tracking-normal uppercase`}>
+          CREATIVIDAD SIN LÍMITES
+        </div>
       </div>
 
-      {/* Overlay links */}
       <div
         style={{
           position: "absolute",
@@ -439,7 +291,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
               marginRight: "1rem",
               pointerEvents: "auto",
             }}
-            className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase1`}
+            className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}
           >
             ARTISTAS
           </a>
@@ -455,7 +307,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
               textDecoration: "none",
               pointerEvents: "auto",
             }}
-            className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase1`}
+            className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}
           >
             EMPRESAS
           </a>
@@ -493,6 +345,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
               loop
               muted
               playsInline
+              preload="auto"
             />
           </div>
         }
@@ -519,6 +372,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
               loop
               muted
               playsInline
+              preload="auto"
             />
           </div>
         }

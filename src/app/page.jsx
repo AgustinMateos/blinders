@@ -8,8 +8,7 @@ export default function Home() {
       <SplitVideo
         videoLeftSrc="/artistasrr.mp4 " 
         videoRightSrc="/corprr.mp4"
-        posterLeft="/artistas.svg" 
-        posterRight="/empresas.svg" 
+         
          
       />
     </div>

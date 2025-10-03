@@ -67,7 +67,15 @@ const Navbar = () => {
                 </button>
 
                 {/* Menu Links */}
-                <div className="border-b-[1px] md:w-[295px] border-[#F2F2F280] flex flex-col justify-end items-end"> <Link
+                <div className="border-b-[1px] md:w-[295px] border-[#F2F2F280] flex flex-col justify-end items-end"> 
+                    <Link
+                    href="#home"
+                    className="block px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
+                    onClick={() => setIsOpen(false)}
+                >
+                    Inicio
+                </Link>
+                    <Link
                     href="#home"
                     className="block px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
                     onClick={() => setIsOpen(false)}
