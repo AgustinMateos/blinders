@@ -121,7 +121,8 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
           }}
         >
-          <div className={`${BigShoulders}`} style={{ fontSize: "96px", fontWeight: "bold" }}>
+          <div className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}>
+
             CREATIVIDAD SIN LÍMITES
           </div>
         </div>
@@ -262,7 +263,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
         }}
       >
-        <div className={`${BigShoulders} font-bold text-[66px] leading-none tracking-normal uppercase`}>
+        <div className={`${BigShoulders} font-bold text-[94px] leading-none tracking-normal uppercase`}>
           CREATIVIDAD SIN LÍMITES
         </div>
       </div>
