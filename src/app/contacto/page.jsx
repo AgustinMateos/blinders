@@ -1,18 +1,19 @@
 import React from "react";
 import Image from "next/image";
+import { BigShoulders } from "../ui/fonts";
 export default function Contacto() {
     return (
         <div className="pt-20 bg-black w-full min-h-screen text-white">
             <div className=" ">
                 {/* Header Section */}
                 <div className="w-full mx-1  border-b-[1px] h-[139px] border-[#F2F2F280] flex items-center justify-start">
-                    <h1 className="text-[#FFFFFF] font-bold text-[96px] leading-[100%] tracking-[0] uppercase">
+                    <h1 className={`${BigShoulders} text-[#FFFFFF] font-bold text-[96px] leading-[100%] tracking-[0] uppercase`}>
                         Contacto
                     </h1>
                 </div>
 
                 {/* Main Content Section */}
-                <div className="w-full flex justify-between py-10">
+                <div className="w-full flex flex-col md:flex-row justify-between py-10">
                     {/* Left Side (Image Placeholder) */}
                     <div className="w-[50%] relative">
                         <div className="w-full h-[730px] bg-gray-800 flex items-center justify-center">
@@ -65,7 +66,7 @@ export default function Contacto() {
                                 <option>Fashionfilm</option>
                                 <option>Branding</option>
                                 <option>Otro</option>
-                                
+
                             </select>
                         </div>
                         <div>
@@ -75,9 +76,12 @@ export default function Contacto() {
                                 placeholder="Agrega un mensaje..."
                             ></textarea>
                         </div>
-                        <button className="w-full py-2 bg-transparent border border-white text-white hover:bg-white hover:text-black transition-colors">
-                            ENVIAR →
-                        </button>
+                        <div className="flex flex-row  justify-end">
+                            <button className=" w-[112px] font-normal text-[32px] leading-none tracking-normal uppercase bg-transparent  text-white  ">
+                            ENVIAR
+                           </button>
+                            <Image src={"/flecha.svg"} width={30} height={30} alt="flecha"/>
+                        </div>
                         <div className="w-[175px]  flex flex-col py-10 space-y-4">
                             <div className="flex justify-center space-x-4">
                                 <Image src='/redes/logotiktok.svg' width={20} height={24} alt="redes" />
@@ -93,7 +97,7 @@ export default function Contacto() {
 
                 </div>
 
-                {/* Footer Section */}
+
 
             </div>
         </div>

@@ -12,12 +12,12 @@ const Navbar = () => {
     };
 
     return (
-      <nav className="fixed top-0 left-0 w-full p-4 flex justify-between items-center z-100 text-white">
+        <nav className="fixed top-0 left-0 w-full p-4 flex justify-between items-center z-100 text-white">
             {/* Logo/Brand */}
             <div className="flex items-center w-auto">
                 <Link href={"/"} className="flex items-center w-auto">
-                <Image src="/Subtract.svg" alt="logo" width={30} height={30} />
-                <h2 className="text-2xl font-bold pl-1">BLINDERS</h2>
+                    <Image src="/Subtract.svg" alt="logo" width={30} height={30} />
+                    <h2 className="text-2xl font-bold pl-1">BLINDERS</h2>
                 </Link>
             </div>
 
@@ -48,10 +48,10 @@ const Navbar = () => {
             >
                 {/* Logo/Brand in Dropdown */}
                 <div className="absolute top-4 left-4 flex items-center">
-                     <Link href={"/"} className="flex items-center w-auto">
-                <Image src="/Subtract.svg" alt="logo" width={30} height={30} />
-                <h2 className="text-2xl font-bold pl-1">BLINDERS</h2>
-                </Link>
+                    <Link href={"/"} className="flex items-center w-auto">
+                        <Image src="/Subtract.svg" alt="logo" width={30} height={30} />
+                        <h2 className="text-2xl font-bold pl-1">BLINDERS</h2>
+                    </Link>
                 </div>
 
                 {/* Close Button (X) */}
@@ -75,19 +75,19 @@ const Navbar = () => {
                     Proyectos
                 </Link>
                     <Link
-                        href="#about"
+                        href="/blinders"
                         className="block px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
                         onClick={() => setIsOpen(false)}
                     >
                         Blinders
                     </Link>
-                   <Link
-  href="/contacto"
-  className="block px-4 py-4 text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
-  onClick={() => setIsOpen(false)}
->
-  Contacto
-</Link></div>
+                    <Link
+                        href="/contacto"
+                        className="block px-4 py-4 text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        Contacto
+                    </Link></div>
                 <div className="flex w-[175px] pt-[30px] pb-[15px] justify-evenly">
                     <Image src='/redes/logotiktok.svg' width={20} height={24} alt="redes" />
                     <Image src='/redes/logoinstagram.svg' width={20} height={24} alt="redes" />

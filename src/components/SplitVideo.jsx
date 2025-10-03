@@ -1,5 +1,6 @@
 "use client";
 
+import { BigShoulders } from "@/app/ui/fonts";
 import { useRef, useState, useEffect } from "react";
 import { ReactCompareSlider } from "react-compare-slider";
 
@@ -161,7 +162,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
           }}
         >
-          <div style={{ fontSize: "2rem", fontWeight: "bold" }}>CREATIVIDAD SIN LÍMITES</div>
+          <div className={`${BigShoulders}`} style={{ fontSize: "2rem", fontWeight: "bold" }}>CREATIVIDAD SIN LÍMITES</div>
         </div>
 
         {/* Image and Video Content */}
@@ -410,7 +411,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
           textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
         }}
       >
-        <div style={{ fontSize: "3rem", fontWeight: "bold" }}>CREATIVIDAD SIN LÍMITES</div>
+        <div className={`${BigShoulders} font-bold text-[66px] leading-none tracking-normal uppercase`}>CREATIVIDAD SIN LÍMITES</div>
       </div>
 
       {/* Overlay links */}
@@ -438,6 +439,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
               marginRight: "1rem",
               pointerEvents: "auto",
             }}
+            className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase1`}
           >
             ARTISTAS
           </a>
@@ -453,6 +455,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc, posterLeft, posterRight }) {
               textDecoration: "none",
               pointerEvents: "auto",
             }}
+            className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase1`}
           >
             EMPRESAS
           </a>
