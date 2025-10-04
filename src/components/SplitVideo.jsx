@@ -1,4 +1,3 @@
-
 "use client";
 
 import { BigShoulders } from "@/app/ui/fonts";
@@ -14,6 +13,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
   const [position, setPosition] = useState(50);
   const [isMobile, setIsMobile] = useState(false);
   const [currentImage, setCurrentImage] = useState("left");
+  const [showText, setShowText] = useState(true); // State to control text visibility
 
   // Detect screen size (mobile and tablet)
   useEffect(() => {
@@ -24,6 +24,16 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Hide text after 5 seconds on mobile and tablet
+  useEffect(() => {
+    if (isMobile) {
+      const timer = setTimeout(() => {
+        setShowText(false);
+      }, 5000); // 5000ms = 5 seconds
+      return () => clearTimeout(timer); // Cleanup timeout on unmount
+    }
+  }, [isMobile]);
 
   // Play videos and keep them in sync for desktop
   useEffect(() => {
@@ -107,25 +117,26 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           overflow: "hidden",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            color: "white",
-            textAlign: "center",
-            pointerEvents: "none",
-            zIndex: 10,
-            width: "100%",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-          }}
-        >
-          <div className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}>
-
-            CREATIVIDAD SIN LÍMITES
+        {showText && ( // Conditionally render the text based on showText state
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              color: "white",
+              textAlign: "center",
+              pointerEvents: "none",
+              zIndex: 10,
+              width: "100%",
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+            }}
+          >
+            <div className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}>
+              CREATIVIDAD SIN LÍMITES
+            </div>
           </div>
-        </div>
+        )}
 
         <Swiper
           direction="vertical"
@@ -236,7 +247,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
     );
   }
 
-  // Desktop view
+  // Desktop view (unchanged)
   return (
     <div
       style={{
