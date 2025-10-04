@@ -118,26 +118,26 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           overflow: "hidden",
         }}
       >
-        {showText && ( // Conditionally render the text based on showText state
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              color: "white",
-              textAlign: "center",
-              pointerEvents: "none",
-              zIndex: 10,
-              width: "100%",
-              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-            }}
-          >
-            <div className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}>
-              CREATIVIDAD SIN LÍMITES
-            </div>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            color: "white",
+            textAlign: "center",
+            pointerEvents: "none",
+            zIndex: 10,
+            width: "100%",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+            opacity: showText ? 1 : 0, // Control opacity for fade effect
+            transition: "opacity 1s ease-in-out", // Smooth fade transition
+          }}
+        >
+          <div className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}>
+            CREATIVIDAD SIN LÍMITES
           </div>
-        )}
+        </div>
 
         <Swiper
           direction="vertical"
@@ -205,52 +205,52 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           </SwiperSlide>
         </Swiper>
 
-        <div
-          style={{
-            position: "absolute",
-            bottom: "20px",
-            left: "20px",
-            right: "20px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            zIndex: 10,
-            pointerEvents: "none",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              pointerEvents: "auto",
-            }}
-          >
-            <Image
-              src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
-              alt="Subtract"
-              width={40}
-              height={30}
-              style={{  display: "block" }}
-            />
-            <span
-              style={{
-                color: "white",
-                fontSize: "1.2rem",
-                fontWeight: "bold",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-                display: "inline-block",
-              }}
-            >
-              {currentImage === "left" ? "Art" : "Corp"}
-            </span>
-          </div>
-        </div>
+       <div
+  style={{
+    position: "absolute",
+    bottom: "20px",
+    left: "20px",
+    right: "20px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    zIndex: 10,
+    pointerEvents: "none",
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "10px",
+      pointerEvents: "auto",
+    }}
+  >
+    <img
+      src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
+      alt="Subtract"
+      width={40}
+      height={30}
+      style={{ display: "block" }}
+    />
+    <span
+      style={{
+        color: "white",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+        display: "inline-block",
+      }}
+    >
+      {currentImage === "left" ? "Art" : "Corp"}
+    </span>
+  </div>
+</div>
       </div>
     );
   }
 
-  // Desktop view (unchanged)
+  // Desktop view
   return (
     <div
       style={{
