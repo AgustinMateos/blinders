@@ -6,6 +6,7 @@ import { ReactCompareSlider } from "react-compare-slider";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 function SplitVideo({ videoLeftSrc, videoRightSrc }) {
   const leftVideoRef = useRef(null);
@@ -225,10 +226,12 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               pointerEvents: "auto",
             }}
           >
-            <img
+            <Image
               src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
               alt="Subtract"
-              style={{ width: "40px", height: "30px", display: "block" }}
+              width={40}
+              height={30}
+              style={{  display: "block" }}
             />
             <span
               style={{
