@@ -70,12 +70,13 @@ export default function AboutUs() {
               src="/blinders/blinders-aboutus.svg"
               alt="Blinders About Us"
               width={798}
+              priority
               height={690}
               style={{ width: '100%', height: 'auto' }}
             />
           </div>
         </div>
-        <div className='top-[290px] md:top-[150px] absolute left-[20px] w-[90%]' >
+        <div className='top-[320px] md:top-[150px] absolute left-[20px] w-[90%]' >
           <h1 className={`${BigShoulders.className} pb-[25px] md:pb-[25px] md:font-bold md:text-[48px] md:leading-[100%] md:tracking-normal md:text-left md:uppercase font-bold text-[40px] leading-[100%] tracking-[0%] uppercase`}>
             MATERIALIZAMOS VISIONES:
           </h1>
