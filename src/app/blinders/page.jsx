@@ -73,23 +73,23 @@ export default function AboutUs() {
             />
           </div>
         </div>
-        <div style={{ position: 'absolute', top: '70px', left: '20px', width: '90%' }}>
+        <div style={{ position: 'absolute', top: '150px', left: '20px', width: '90%' }}>
           <h1 className={` ${BigShoulders.className} pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
             MATERIALIZAMOS VISIONES:
             
           </h1>
-          <h2 className={` ${BigShoulders.className} pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
+          <h2 className={` ${BigShoulders.className} pl-[10px] pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
             TRANSFORMAMOS IDEAS EN EXPERIENCIAS.
           </h2>
-         <h2 className={` ${BigShoulders.className} pb-[50px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
+         <h2 className={` ${BigShoulders.className} pl-[20px] pb-[50px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
             TRAZAMOS NUEVOS CAMINOS PARA HACERLAS REALIDAD.
           </h2>
-          <div className="w-[62%]">
+          {/* <div className="w-[62%]">
             <p className="pb-[20px] font-normal text-[18px] leading-relaxed tracking-[0.02em]">
             En Blinders no hay fórmulas ni moldes. Cada proyecto es un punto de partida distinto, con una historia
             por contar y un universo por crear.
           </p>
-          <p className="font-normal text-[18px] leading-relaxed tracking-[0.02em]">Nos mueve la posibilidad de construir algo único, algo que conecte, emocione y deje huella.</p></div>
+          <p className="font-normal text-[18px] leading-relaxed tracking-[0.02em]">Nos mueve la posibilidad de construir algo único, algo que conecte, emocione y deje huella.</p></div> */}
         </div>
       </div>
 
