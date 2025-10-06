@@ -100,7 +100,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
         justifyContent: "center",
       }}
     >
-      <img src="/SubtractRed.svg" alt="logo" width="30" height="30" style={{ display: "block" }} />
+      <img src="/indicador2.svg" alt="logo" width="40" height="40" style={{ display: "block" }} />
     </div>
   );
 

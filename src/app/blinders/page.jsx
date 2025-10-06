@@ -124,22 +124,22 @@ export default function AboutUs() {
           onMouseMove={handleMouseMove}
         >
           {sliderImages.map((src, index) => (
-            <div key={index} className="w-[500px] h-[500px] flex-shrink-0 rounded-md overflow-hidden">
+            <div key={index} className="w-[200px] h-[200px] md:w-[500px] md:h-[500px] flex-shrink-0 rounded-md overflow-hidden">
               <Image src={src} alt={`Slide ${index + 1}`} width={500} height={500} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
         <div className='mt-20 h-[274px] w-full bg-[url("/blinders/fondo.svg")] relative bg-cover bg-center'>
           <div className='h-full w-full flex items-center justify-center'>
-            <p className={`font-bold text-6xl leading-none tracking-normal text-center uppercase ${BigShoulders.className}`}>
+            <p className={`font-bold md:text-6xl md:leading-none md:tracking-normal md:text-center md:uppercase md:font-bold text-[40px] leading-[100%] tracking-[0%] text-center align-middle uppercase ${BigShoulders.className}`}>
               Un sólo equipo, dos formas de crear
             </p>
           </div>
         </div>
-        <div className="flex w-full pt-[80px] pb-[80px]">
-          <div className="flex flex-col w-[50%] h-[1000px] border-b-[#EAD18F] border-b-[4px]">
+        <div className="flex w-full pt-[80px] flex-col md:flex-row pb-[80px]">
+          <div className="flex flex-col w-full md:w-[50%] h-[1000px] border-b-[#EAD18F] border-b-[4px]">
             <div className="bg-[url('/blinders/corp.svg')] h-[535px] w-full bg-cover bg-center flex items-center justify-center">
-              <Image src="/blinders/blinderscorp.svg" alt="Imagen interna corp" width={267} height={267} className="max-h-[50%] max-w-[50%] object-contain" />
+              <Image src="/blinders/blinderscorp.svg" alt="Imagen interna corp" width={267} height={267} className="max-h-[50%] max-w-[100%] md:max-w-[50%] object-contain" />
             </div>
             <div className="h-[460px] w-full flex flex-col justify-center items-center">
               <div className="h-[270px] w-[85%] flex flex-col justify-around">
@@ -153,7 +153,7 @@ export default function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-[50%] h-[1000px] border-t-[#FF2C2C] border-t-[4px]">
+          <div className="flex flex-col w-full md:w-[50%] h-[1000px] md:border-t-[#FF2C2C] md:border-t-[4px]">
             <div className="h-[460px] w-full flex flex-col justify-center items-center">
               <div className="h-[270px] w-[85%] flex flex-col justify-around">
                 <h3 className={`${BigShoulders.className} font-bold text-[40px] leading-none tracking-normal uppercase`}>
@@ -165,7 +165,7 @@ export default function AboutUs() {
                 </p>
               </div>
             </div>
-            <div className="bg-[url('/blinders/art.svg')] h-[535px] w-full bg-cover bg-center flex items-center justify-center">
+            <div className="bg-[url('/blinders/art.svg')] h-[535px] w-full bg-contain bg-no-repeat bg-center flex items-center justify-center">
               <Image src="/blinders/blindersart.svg" alt="Imagen interna art" width={267} height={267} className="max-h-[50%] max-w-[50%] object-contain" />
             </div>
           </div>
