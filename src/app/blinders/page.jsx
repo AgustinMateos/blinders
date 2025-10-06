@@ -142,7 +142,7 @@ export default function AboutUs() {
               <Image src="/blinders/blinderscorp.svg" alt="Imagen interna corp" width={267} height={267} className="max-h-[50%] max-w-[100%] md:max-w-[50%] object-contain" />
             </div>
             <div className="h-[460px] w-full flex flex-col justify-center items-center">
-              <div className="h-[270px] w-[85%] flex flex-col justify-around">
+              <div className="h-[370px] md:h-[270px] w-[85%] flex flex-col justify-around">
                 <h3 className={`${BigShoulders.className} font-bold text-[40px] leading-none tracking-normal uppercase`}>
                   Estrategia visual para marcas, campañas y empresas.
                 </h3>
@@ -153,9 +153,9 @@ export default function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-full md:w-[50%] h-[1000px] border-b-[#FF2C2C] md:border-b-[0px]  border-b-[4px] md:border-t-[#FF2C2C] md:border-t-[4px]">
-            <div className="h-[460px] w-full flex flex-col justify-center items-center">
-              <div className="h-[270px] w-[85%] flex flex-col justify-around">
+          <div className="flex flex-col-reverse md:flex-col w-full md:w-[50%]  md:h-[1000px] border-b-[#FF2C2C] md:border-b-[0px]  border-b-[4px] md:border-t-[#FF2C2C] md:border-t-[4px]">
+            <div className="h-auto md:h-[460px] w-full flex flex-col justify-center items-center">
+              <div className="h-[370px] md:h-[270px] w-[85%] flex flex-col justify-around">
                 <h3 className={`${BigShoulders.className} font-bold text-[40px] leading-none tracking-normal uppercase`}>
                   Narrativas visuales que vibran con la música y el arte.
                 </h3>
@@ -165,7 +165,7 @@ export default function AboutUs() {
                 </p>
               </div>
             </div>
-            <div className="bg-[url('/blinders/art.svg')] h-[535px] w-full bg-contain md:bg-cover bg-no-repeat bg-center flex items-center justify-center">
+            <div className="bg-[url('/blinders/art.svg')] h-[352px] md:h-[535px] w-full bg-contain md:bg-cover bg-no-repeat bg-center flex items-center justify-center">
               <Image src="/blinders/blindersart.svg" alt="Imagen interna art" width={267} height={267} className="max-h-[50%] max-w-[50%] object-contain" />
             </div>
           </div>
