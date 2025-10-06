@@ -153,7 +153,7 @@ export default function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-full md:w-[50%] h-[1000px] md:border-t-[#FF2C2C] md:border-t-[4px]">
+          <div className="flex flex-col w-full md:w-[50%] h-[1000px] border-b-[#FF2C2C] border-b-[4px] md:border-t-[#FF2C2C] md:border-t-[4px]">
             <div className="h-[460px] w-full flex flex-col justify-center items-center">
               <div className="h-[270px] w-[85%] flex flex-col justify-around">
                 <h3 className={`${BigShoulders.className} font-bold text-[40px] leading-none tracking-normal uppercase`}>
