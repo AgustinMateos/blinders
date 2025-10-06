@@ -1,7 +1,7 @@
-'use client';
-
+'use client'
 import React, { useRef, useEffect } from 'react';
 import { BigShoulders } from '../ui/fonts';
+import Image from 'next/image'; // Import the Image component
 
 export default function AboutUs() {
   const sliderRef = useRef(null);
@@ -40,14 +40,13 @@ export default function AboutUs() {
     '/blinders/slider/slide2.svg',
     '/blinders/slider/slide3.svg',
     '/blinders/slider/slide1.svg',
-    '/blinders/slider/slide2.svg', // Adjusted to 4 images for clarity
+    '/blinders/slider/slide2.svg',
   ];
 
-  // Set initial scroll position to center the second image
   useEffect(() => {
     if (sliderRef.current) {
-      const slideWidth = sliderRef.current.children[0].offsetWidth + 16; // Include gap (4px * 4)
-      sliderRef.current.scrollLeft = slideWidth; // Scroll to the second image
+      const slideWidth = sliderRef.current.children[0].offsetWidth + 16;
+      sliderRef.current.scrollLeft = slideWidth;
     }
   }, []);
 
@@ -66,33 +65,53 @@ export default function AboutUs() {
       >
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div className="h-[690px] w-[798px]">
-            <img
+            <Image
               src="/blinders/blinders-aboutus.svg"
               alt="Blinders About Us"
+              width={798}
+              height={690}
               style={{ width: '100%', height: 'auto' }}
             />
           </div>
         </div>
         <div style={{ position: 'absolute', top: '150px', left: '20px', width: '90%' }}>
-          <h1 className={` ${BigShoulders.className} pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
+          <h1 className={`${BigShoulders.className} pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
             MATERIALIZAMOS VISIONES:
-            
           </h1>
-          <h2 className={` ${BigShoulders.className} pl-[10px] pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
+          <h2 className={`${BigShoulders.className} pl-[10px] pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
             TRANSFORMAMOS IDEAS EN EXPERIENCIAS.
           </h2>
-         <h2 className={` ${BigShoulders.className} pl-[20px] pb-[50px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
+          <h2 className={`${BigShoulders.className} pl-[20px] pb-[50px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
             TRAZAMOS NUEVOS CAMINOS PARA HACERLAS REALIDAD.
           </h2>
-          {/* <div className="w-[62%]">
-            <p className="pb-[20px] font-normal text-[18px] leading-relaxed tracking-[0.02em]">
-            En Blinders no hay fórmulas ni moldes. Cada proyecto es un punto de partida distinto, con una historia
-            por contar y un universo por crear.
-          </p>
-          <p className="font-normal text-[18px] leading-relaxed tracking-[0.02em]">Nos mueve la posibilidad de construir algo único, algo que conecte, emocione y deje huella.</p></div> */}
         </div>
       </div>
-
+      {/*historia */}
+      <div className='h-[315px] flex justify-center w-full'>
+        <div className='h-[264px] w-[860px] bg-[#161616] relative'>
+          <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute top-[-10px] left-[-10px]" />
+          <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute top-[-10px] right-[-10px]" />
+          <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute bottom-[-10px] left-[-10px]" />
+          <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute bottom-[-10px] right-[-10px]" />
+          <Image src="/blindersEstampa.svg" alt="Estampa" width={180} height={180} className="absolute bottom-[-5px] left-[280px]" />
+          <div className='flex flex-row justify-around h-full items-center'>
+            <div className='w-[320px]'>
+              <h3 className="font-bold text-[30px] leading-[40px] tracking-[0%] uppercase text-[#E3E3E3]">
+                En Blinders no hay fórmulas ni moldes.
+              </h3>
+            </div>
+            <div className='w-[367px] h-auto border-l-[1px] border-l-[#757575]'>
+              <p className="pl-[40px] font-medium text-[16px] leading-[150%] tracking-[1%] text-[#EBEBEB]">
+                Cada proyecto es un punto de partida distinto, con una historia por contar y un universo por crear.
+              </p>
+              <br />
+              <p className="pl-[40px] font-medium text-[16px] leading-[150%] tracking-[1%] text-[#EBEBEB]">
+                Nos mueve la posibilidad de construir algo único, algo que conecte, emocione y deje huella.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* Slider Section */}
       <div className="mt-10">
         <div
@@ -104,65 +123,52 @@ export default function AboutUs() {
           onMouseMove={handleMouseMove}
         >
           {sliderImages.map((src, index) => (
-            <div
-              key={index}
-              className="w-[500px] h-[500px] flex-shrink-0 rounded-md overflow-hidden"
-            >
-              <img
-                src={src}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
+            <div key={index} className="w-[500px] h-[500px] flex-shrink-0 rounded-md overflow-hidden">
+              <Image src={src} alt={`Slide ${index + 1}`} width={500} height={500} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
-         <div className=' mt-20 h-[274px] w-full bg-[url("/blinders/fondo.svg")] relative bg-cover bg-center'>
-            
-    <div className=' h-full w-full flex items-center justify-center'><p className={`font-bold text-6xl leading-none tracking-normal text-center uppercase ${BigShoulders.className}`}>Un  sólo equipo, dos formas de crear</p></div>
-             
+        <div className='mt-20 h-[274px] w-full bg-[url("/blinders/fondo.svg")] relative bg-cover bg-center'>
+          <div className='h-full w-full flex items-center justify-center'>
+            <p className={`font-bold text-6xl leading-none tracking-normal text-center uppercase ${BigShoulders.className}`}>
+              Un sólo equipo, dos formas de crear
+            </p>
+          </div>
         </div>
         <div className="flex w-full pt-[80px] pb-[80px]">
-  <div className="flex flex-col w-[50%] h-[1000px] border-b-[#EAD18F] border-b-[4px]">
-    <div className="bg-[url('/blinders/corp.svg')] h-[535px] w-full bg-cover bg-center flex items-center justify-center">
-      <img
-       src="/blinders/blinderscorp.svg"
-        alt="Imagen interna corp"
-        className="max-h-[50%] max-w-[50%] object-contain" // Ajusta el tamaño según necesites
-      />
-    </div>
-    <div className="h-[460px] w-full flex flex-col justify-center items-center">
-      <div className="h-[270px] w-[85%] flex flex-col justify-around">
-        <h3 className={`${BigShoulders.className} font-bold text-[40px] leading-none tracking-normal uppercase`}>
-          Estrategia visual para marcas, campañas y empresas.
-        </h3>
-        <p>
-          Trabajamos junto a instituciones, emprendimientos y grandes compañías para transformar ideas en contenido
-          audiovisual que impacta, comunica y genera resultados.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div className="flex flex-col w-[50%] h-[1000px] border-t-[#FF2C2C] border-t-[4px]">
-    <div className="h-[460px] w-full flex flex-col justify-center items-center">
-      <div className="h-[270px] w-[85%] flex flex-col justify-around">
-        <h3 className={`${BigShoulders.className} font-bold text-[40px] leading-none tracking-normal uppercase`}>
-          Narrativas visuales que vibran con la música y el arte.
-        </h3>
-        <p>
-          Producimos videoclips, shows y piezas visuales que acompañan a artistas a contar su historia con una estética
-          poderosa y emocional.
-        </p>
-      </div>
-    </div>
-    <div className="bg-[url('/blinders/art.svg')] h-[535px] w-full bg-cover bg-center flex items-center justify-center">
-      <img
-        src="/blinders/blindersart.svg" // Cambia por la ruta de tu imagen interna
-        alt="Imagen interna art"
-        className="max-h-[50%] max-w-[50%] object-contain" // Ajusta el tamaño según necesites
-      />
-    </div>
-  </div>
-</div>
+          <div className="flex flex-col w-[50%] h-[1000px] border-b-[#EAD18F] border-b-[4px]">
+            <div className="bg-[url('/blinders/corp.svg')] h-[535px] w-full bg-cover bg-center flex items-center justify-center">
+              <Image src="/blinders/blinderscorp.svg" alt="Imagen interna corp" width={267} height={267} className="max-h-[50%] max-w-[50%] object-contain" />
+            </div>
+            <div className="h-[460px] w-full flex flex-col justify-center items-center">
+              <div className="h-[270px] w-[85%] flex flex-col justify-around">
+                <h3 className={`${BigShoulders.className} font-bold text-[40px] leading-none tracking-normal uppercase`}>
+                  Estrategia visual para marcas, campañas y empresas.
+                </h3>
+                <p>
+                  Trabajamos junto a instituciones, emprendimientos y grandes compañías para transformar ideas en contenido
+                  audiovisual que impacta, comunica y genera resultados.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col w-[50%] h-[1000px] border-t-[#FF2C2C] border-t-[4px]">
+            <div className="h-[460px] w-full flex flex-col justify-center items-center">
+              <div className="h-[270px] w-[85%] flex flex-col justify-around">
+                <h3 className={`${BigShoulders.className} font-bold text-[40px] leading-none tracking-normal uppercase`}>
+                  Narrativas visuales que vibran con la música y el arte.
+                </h3>
+                <p>
+                  Producimos videoclips, shows y piezas visuales que acompañan a artistas a contar su historia con una estética
+                  poderosa y emocional.
+                </p>
+              </div>
+            </div>
+            <div className="bg-[url('/blinders/art.svg')] h-[535px] w-full bg-cover bg-center flex items-center justify-center">
+              <Image src="/blinders/blindersart.svg" alt="Imagen interna art" width={267} height={267} className="max-h-[50%] max-w-[50%] object-contain" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
