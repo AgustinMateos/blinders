@@ -87,25 +87,25 @@ export default function AboutUs() {
         </div>
       </div>
       {/*historia */}
-      <div className='h-[315px] flex justify-center w-full'>
-        <div className='h-[264px] w-[860px] bg-[#161616] relative'>
+      <div className=' h-[380px] md:h-[315px] flex flex-col md:flex-row items-center md:items-center justify-center w-full'>
+        <div className='p-[30px] md:p-[0px] h-[388px] md:h-[264px] w-[350px] md:w-[860px] bg-[#161616] relative'>
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute top-[-10px] left-[-10px]" />
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute top-[-10px] right-[-10px]" />
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute bottom-[-10px] left-[-10px]" />
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute bottom-[-10px] right-[-10px]" />
-          <Image src="/blindersEstampa.svg" alt="Estampa" width={180} height={180} className="absolute bottom-[-5px] left-[280px]" />
-          <div className='flex flex-row justify-around h-full items-center'>
+          <Image src="/blindersEstampa.svg" alt="Estampa" width={180} height={180} className="absolute bottom-[90px] left-[170px] md:bottom-[-5px] nd:left-[280px]" />
+          <div className='flex flex-col md:flex-row justify-around h-full items-center'>
             <div className='w-[320px]'>
-              <h3 className="font-bold text-[30px] leading-[40px] tracking-[0%] uppercase text-[#E3E3E3]">
+              <h3 className="pl-[15px] md:pl-[0px] font-bold text-[30px] leading-[40px] tracking-[0%] uppercase text-[#E3E3E3]">
                 En Blinders no hay fórmulas ni moldes.
               </h3>
             </div>
-            <div className='w-[367px] h-auto border-l-[1px] border-l-[#757575]'>
-              <p className="pl-[40px] font-medium text-[16px] leading-[150%] tracking-[1%] text-[#EBEBEB]">
+            <div className='w-[98%] md:w-[367px] h-auto md:border-l-[1px] md:border-l-[#757575]'>
+              <p className="md:pl-[35px] font-medium text-[16px] leading-[150%] tracking-[1%] text-[#EBEBEB]">
                 Cada proyecto es un punto de partida distinto, con una historia por contar y un universo por crear.
               </p>
               <br />
-              <p className="pl-[40px] font-medium text-[16px] leading-[150%] tracking-[1%] text-[#EBEBEB]">
+              <p className="md:pl-[35px] font-medium text-[16px] leading-[150%] tracking-[1%] text-[#EBEBEB]">
                 Nos mueve la posibilidad de construir algo único, algo que conecte, emocione y deje huella.
               </p>
             </div>
