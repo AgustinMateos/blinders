@@ -51,20 +51,21 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="pt-20 bg-black w-full min-h-screen text-white">
+    <div className=" pt-20 bg-black w-full min-h-screen text-white">
       {/* Hero/About Section */}
       <div
         style={{
           position: 'relative',
-          marginTop: '24px',
+          
           backgroundColor: 'black',
           color: 'white',
           padding: '20px',
-          minHeight: '690px',
+         
         }}
+        className='min-h- md:min-h-[690px] mt-0  pt-[0px] md:pt-[20px]  md:mt-[24px]'
       >
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <div className="h-[690px] w-[798px]">
+          <div className="h-[100vh] md:h-[690px] w-[798px]">
             <Image
               src="/blinders/blinders-aboutus.svg"
               alt="Blinders About Us"
@@ -74,14 +75,14 @@ export default function AboutUs() {
             />
           </div>
         </div>
-        <div style={{ position: 'absolute', top: '150px', left: '20px', width: '90%' }}>
-          <h1 className={`${BigShoulders.className} pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
+        <div className='top-[290px] md:top-[150px] absolute left-[20px] w-[90%]' >
+          <h1 className={`${BigShoulders.className} pb-[25px] md:pb-[25px] md:font-bold md:text-[48px] md:leading-[100%] md:tracking-normal md:text-left md:uppercase font-bold text-[40px] leading-[100%] tracking-[0%] uppercase`}>
             MATERIALIZAMOS VISIONES:
           </h1>
-          <h2 className={`${BigShoulders.className} pl-[10px] pb-[25px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
+          <h2 className={`${BigShoulders.className} pb-[25px] md:pl-[10px] md:pb-[25px] md:font-bold md:text-[48px] md:leading-[100%] md:tracking-normal md:text-left md:uppercase font-bold text-[40px] leading-[100%] tracking-[0%] uppercase`}>
             TRANSFORMAMOS IDEAS EN EXPERIENCIAS.
           </h2>
-          <h2 className={`${BigShoulders.className} pl-[20px] pb-[50px] font-bold text-[48px] leading-[100%] tracking-normal text-left uppercase`}>
+          <h2 className={`${BigShoulders.className} pb-[25px] md:pl-[20px] md:pb-[50px] md:font-bold md:text-[48px] md:leading-[100%] md:tracking-normal md:text-left md:uppercase font-bold text-[40px] leading-[100%] tracking-[0%] uppercase`}>
             TRAZAMOS NUEVOS CAMINOS PARA HACERLAS REALIDAD.
           </h2>
         </div>
@@ -93,7 +94,7 @@ export default function AboutUs() {
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute top-[-10px] right-[-10px]" />
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute bottom-[-10px] left-[-10px]" />
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute bottom-[-10px] right-[-10px]" />
-          <Image src="/blindersEstampa.svg" alt="Estampa" width={180} height={180} className="absolute bottom-[90px] left-[170px] md:bottom-[-5px] nd:left-[280px]" />
+          <Image src="/blindersEstampa.svg" alt="Estampa" width={180} height={180} className="absolute bottom-[90px] left-[170px] md:bottom-[-5px] md:left-[280px]" />
           <div className='flex flex-col md:flex-row justify-around h-full items-center'>
             <div className='w-[320px]'>
               <h3 className="pl-[15px] md:pl-[0px] font-bold text-[30px] leading-[40px] tracking-[0%] uppercase text-[#E3E3E3]">
