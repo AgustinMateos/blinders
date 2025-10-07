@@ -14,7 +14,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
   const [position, setPosition] = useState(50);
   const [isMobile, setIsMobile] = useState(false);
   const [currentImage, setCurrentImage] = useState("left");
-  const [showText, setShowText] = useState(true); // State to control text visibility
+  const [showText, setShowText] = useState(true);
 
   // Detect screen size (mobile and tablet)
   useEffect(() => {
@@ -31,8 +31,8 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
     if (isMobile) {
       const timer = setTimeout(() => {
         setShowText(false);
-      }, 5000); // 5000ms = 5 seconds
-      return () => clearTimeout(timer); // Cleanup timeout on unmount
+      }, 5000);
+      return () => clearTimeout(timer);
     }
   }, [isMobile]);
 
@@ -100,7 +100,13 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
         justifyContent: "center",
       }}
     >
-      <img src="/indicador2.svg" alt="logo" width="40" height="40" style={{ display: "block" }} />
+      <Image
+        src="/indicador2.svg"
+        alt="Slider handle"
+        width={40}
+        height={40}
+        style={{ display: "block" }}
+      />
     </div>
   );
 
@@ -130,15 +136,46 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             zIndex: 10,
             width: "100%",
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-            opacity: showText ? 1 : 0, // Control opacity for fade effect
-            transition: "opacity 1s ease-in-out", // Smooth fade transition
+            opacity: showText ? 1 : 0,
+            transition: "opacity 1s ease-in-out",
           }}
         >
           <div className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}>
             CREATIVIDAD SIN LÍMITES
           </div>
         </div>
-
+        <Image
+          src="/cruz.svg"
+          alt="Top-left corner icon"
+          width={24}
+          height={24}
+          className="absolute"
+          style={{ top: "20px", left: "20px", zIndex: 20 }}
+        />
+        <Image
+          src="/cruz.svg"
+          alt="Top-right corner icon"
+          width={24}
+          height={24}
+          className="absolute"
+          style={{ top: "20px", right: "20px", zIndex: 20 }}
+        />
+        <Image
+          src="/cruz.svg"
+          alt="Bottom-left corner icon"
+          width={24}
+          height={24}
+          className="absolute"
+          style={{ bottom: "20px", left: "20px", zIndex: 20 }}
+        />
+        <Image
+          src="/cruz.svg"
+          alt="Bottom-right corner icon"
+          width={24}
+          height={24}
+          className="absolute"
+          style={{ bottom: "20px", right: "20px", zIndex: 20 }}
+        />
         <Swiper
           direction="vertical"
           slidesPerView={1}
@@ -204,48 +241,47 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             </div>
           </SwiperSlide>
         </Swiper>
-
-       <div
-  style={{
-    position: "absolute",
-    bottom: "20px",
-    left: "20px",
-    right: "20px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    zIndex: 10,
-    pointerEvents: "none",
-  }}
->
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: "10px",
-      pointerEvents: "auto",
-    }}
-  >
-    <img
-      src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
-      alt="Subtract"
-      width={40}
-      height={30}
-      style={{ display: "block" }}
-    />
-    <span
-      style={{
-        color: "white",
-        fontSize: "1.2rem",
-        fontWeight: "bold",
-        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-        display: "inline-block",
-      }}
-    >
-      {currentImage === "left" ? "Art" : "Corp"}
-    </span>
-  </div>
-</div>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            left: "20px",
+            right: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            zIndex: 10,
+            pointerEvents: "none",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              pointerEvents: "auto",
+            }}
+          >
+            <Image
+              src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
+              alt="Indicator icon"
+              width={40}
+              height={30}
+              style={{ display: "block" }}
+            />
+            <span
+              style={{
+                color: "white",
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+                display: "inline-block",
+              }}
+            >
+              {currentImage === "left" ? "Art" : "Corp"}
+            </span>
+          </div>
+        </div>
       </div>
     );
   }
@@ -263,6 +299,38 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
         overflow: "hidden",
       }}
     >
+      <Image
+        src="/linesupizq.svg"
+        alt="Top-left corner icon"
+        width={24}
+        height={24}
+        className="absolute"
+        style={{ top: "100px", left: "15px", zIndex: 20 }}
+      />
+      <Image
+        src="/linesupder.svg"
+        alt="Top-right corner icon"
+        width={24}
+        height={24}
+        className="absolute"
+        style={{ top: "100px", right: "15px", zIndex: 20 }}
+      />
+      <Image
+        src="/lineinfizq.svg"
+        alt="Bottom-left corner icon"
+        width={24}
+        height={24}
+        className="absolute"
+        style={{ bottom: "20px", left: "15px", zIndex: 20 }}
+      />
+      <Image
+        src="/linebotrig.svg"
+        alt="Bottom-right corner icon"
+        width={24}
+        height={24}
+        className="absolute"
+        style={{ bottom: "20px", right: "15px", zIndex: 20 }}
+      />
       <div
         style={{
           position: "absolute",
@@ -281,11 +349,10 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           CREATIVIDAD SIN LÍMITES
         </div>
       </div>
-
       <div
         style={{
           position: "absolute",
-          bottom: "0",
+          bottom: "40px",
           left: "50%",
           transform: "translateX(-50%)",
           color: "white",
@@ -310,10 +377,12 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           >
             ARTISTAS
           </a>
-          <img
+          <Image
             src={position < 50 || position > 50 ? "/SubtractRed.svg" : "/Subtract.svg"}
-            alt="Subtract"
-            style={{ width: "57px", height: "44px", margin: "0 1rem", display: "block" }}
+            alt="Indicator icon"
+            width={57}
+            height={44}
+            style={{ margin: "0 1rem", display: "block" }}
           />
           <a
             href="#empresas"
@@ -328,7 +397,6 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           </a>
         </div>
       </div>
-
       <ReactCompareSlider
         position={position}
         handle={<CustomHandle />}
