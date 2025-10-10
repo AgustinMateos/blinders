@@ -144,38 +144,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             CREATIVIDAD SIN LÍMITES
           </div>
         </div>
-        <Image
-          src="/cruz.svg"
-          alt="Top-left corner icon"
-          width={24}
-          height={24}
-          className="absolute"
-          style={{ top: "20px", left: "20px", zIndex: 20 }}
-        />
-        <Image
-          src="/cruz.svg"
-          alt="Top-right corner icon"
-          width={24}
-          height={24}
-          className="absolute"
-          style={{ top: "20px", right: "20px", zIndex: 20 }}
-        />
-        <Image
-          src="/cruz.svg"
-          alt="Bottom-left corner icon"
-          width={24}
-          height={24}
-          className="absolute"
-          style={{ bottom: "20px", left: "20px", zIndex: 20 }}
-        />
-        <Image
-          src="/cruz.svg"
-          alt="Bottom-right corner icon"
-          width={24}
-          height={24}
-          className="absolute"
-          style={{ bottom: "20px", right: "20px", zIndex: 20 }}
-        />
+        
         <Swiper
           direction="vertical"
           slidesPerView={1}

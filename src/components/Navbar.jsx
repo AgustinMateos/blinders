@@ -101,7 +101,7 @@ const Navbar = () => {
                     <Image src='/redes/logoinstagram.svg' width={20} height={24} alt="redes" />
                     <Image src='/redes/logoyoutube.svg' width={20} height={24} alt="redes" />
                 </div>
-                <div className="flex flex-col pb-[50px] ">
+                <div className="flex flex-col pb-[90px] md:pb-[50px] ">
                     <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%] ">blinders.av@gmail.com</p>
                     <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%]">+54 9 11 5565-0732</p>
                 </div>
