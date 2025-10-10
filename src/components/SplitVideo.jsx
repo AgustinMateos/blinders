@@ -16,10 +16,10 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
   const [currentImage, setCurrentImage] = useState("left");
   const [showText, setShowText] = useState(true);
 
-  // Detect screen size (mobile and tablet)
+  // Detect screen size (mobile and tablet) with matchMedia for better accuracy
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 1024);
+      setIsMobile(window.matchMedia("(max-width: 1024px)").matches);
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -327,7 +327,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           color: "white",
           textAlign: "center",
           pointerEvents: "none",
-          zIndex: 10,
+          zIndex: 20, // Increased z-index to ensure visibility
           width: "100%",
           padding: "1rem 0",
           textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
