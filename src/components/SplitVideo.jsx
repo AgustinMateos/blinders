@@ -231,13 +231,18 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               pointerEvents: "auto",
             }}
           >
-            <Image
-              src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
-              alt="Indicator icon"
-              width={40}
-              height={30}
-              // style={{ display: "block" }}
-            />
+            <img
+  src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
+  alt="Indicator icon"
+  width={40}
+  height={30}
+  style={{ 
+    display: "block",
+    objectFit: "contain",
+    pointerEvents: "none"
+  }}
+  loading="eager" // Fuerza carga inmediata
+/>
             <span
               style={{
                 color: "white",
