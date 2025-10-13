@@ -213,7 +213,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
         <div
           style={{
             position: "absolute",
-            bottom: "85px",
+            bottom: "89px",
             left: "20px",
             right: "20px",
             display: "flex",
