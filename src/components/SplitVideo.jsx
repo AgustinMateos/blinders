@@ -236,7 +236,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               alt="Indicator icon"
               width={40}
               height={30}
-              style={{ display: "block" }}
+              // style={{ display: "block" }}
             />
             <span
               style={{
