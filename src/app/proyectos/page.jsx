@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { projects } from '../../components/ProjectsData'; // Adjust path
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { BigShoulders } from '../ui/fonts';
 export default function Proyectos() {
   const [selectedCategory, setSelectedCategory] = useState('art');
 
@@ -45,7 +45,7 @@ export default function Proyectos() {
               }}
             >
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-sm transition-all duration-300" />
+              <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-[12px] transition-all duration-300" />
               
               {/* Project title */}
               <p className="absolute bottom-[20px] left-1 right-0 text-amber-50 py-2 z-10">
@@ -54,7 +54,7 @@ export default function Proyectos() {
               
               {/* "Ver" text on hover */}
              <div className='absolute top-1/2 flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-lg font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'>
-               <p className=" uppercase text-white text-lg font-bold ">
+               <p className={`${BigShoulders} uppercase text-white text-lg font-bold `}>
                 Ver
               </p>
               <Image src={'/flechaup.svg'} width={30} height={30} alt='flecha'/>

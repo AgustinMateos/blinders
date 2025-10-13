@@ -14,7 +14,7 @@ export default function VideoPage({ params }) {
       {/* Render YouTube iframe */}
       <iframe
         width="100%"
-        height="800px"
+        height="650px"
         src={project.videoUrl}
         title="YouTube video player"
         frameBorder="0"

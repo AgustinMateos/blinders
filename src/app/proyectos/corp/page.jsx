@@ -15,6 +15,7 @@ export default function Corp() {
                 alt={project.title}
                 width={400}
                 height={300}
+                priority
                 className="rounded-lg"
               />
               <p className="mt-2 text-center">{project.title}</p>
