@@ -36,11 +36,21 @@ export default function AboutUs() {
 
   // Lista de imágenes (ajústalas a tus rutas reales)
   const sliderImages = [
-    '/blinders/slider/slide1.svg',
-    '/blinders/slider/slide2.svg',
-    '/blinders/slider/slide3.svg',
-    '/blinders/slider/slide1.svg',
-    '/blinders/slider/slide2.svg',
+    '/blinders/slider/1.jpg',
+    '/blinders/slider/2.jpg',
+    '/blinders/slider/3.jpg',
+    '/blinders/slider/4.jpg',
+    '/blinders/slider/5.jpg',
+    '/blinders/slider/6.jpg',
+    '/blinders/slider/7.jpg',
+    '/blinders/slider/8.jpg',
+    '/blinders/slider/9.jpg',
+    '/blinders/slider/11.jpg',
+    '/blinders/slider/12.jpg',
+    '/blinders/slider/13.jpg',
+    '/blinders/slider/15.jpg',
+    '/blinders/slider/14.jpg',
+    '/blinders/slider/16.jpg',
   ];
 
   useEffect(() => {

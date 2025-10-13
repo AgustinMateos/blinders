@@ -76,7 +76,7 @@ const Navbar = () => {
                     Inicio
                 </Link>
                     <Link
-                    href="#home"
+                    href="/proyectos"
                     className="block px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
                     onClick={() => setIsOpen(false)}
                 >
