@@ -211,47 +211,76 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           </SwiperSlide>
         </Swiper>
         <div
-          style={{
-            position: "absolute",
-            bottom: "89px",
-            left: "20px",
-            right: "20px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            zIndex: 10,
-            pointerEvents: "none",
-            
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              pointerEvents: "auto",
-            }}
-          >
-            <Image
-              src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
-              alt="Indicator icon"
-              width={40}
-              height={30}
-              style={{ display: "block" }}
-            />
-            <span
-              style={{
-                color: "white",
-                fontSize: "1.2rem",
-                fontWeight: "bold",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-                display: "inline-block",
-              }}
-            >
-              {currentImage === "left" ? "Art" : "Corp"}
-            </span>
-          </div>
-        </div>
+  style={{
+    position: "absolute",
+    bottom: "89px",
+    left: "20px",
+    right: "20px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    zIndex: 10,
+    pointerEvents: "none",
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "10px",
+      pointerEvents: "auto",
+    }}
+  >
+    <Image
+      src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
+      alt="Indicator icon"
+      width={40}
+      height={30}
+      style={{ display: "block" }}
+    />
+    <span
+      style={{
+        color: "white",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+        display: "inline-block",
+      }}
+    >
+      {currentImage === "left" ? "Art" : "Corp"}
+    </span>
+  </div>
+  
+  {/* Nuevo elemento con los links VER alineados a la derecha */}
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "15px",
+      pointerEvents: "auto",
+    }}
+  >
+    <a className="flex w-auto"
+      href={currentImage === "left" ? "/proyectos" : "/proyectos"}
+      style={{
+        color: "white",
+        textDecoration: "none",
+        fontSize: "1rem",
+        fontWeight: "bold",
+        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+        padding: "8px 16px",
+        
+        transition: "all 0.3s ease",
+        
+        color: "#ffffff",
+      }}
+      
+    >
+      <p>VER</p>
+      <Image src={'/flechaup.svg'} width={30} alt="flecha" height={30}/>
+    </a>
+  </div>
+</div>
       </div>
     );
   }
