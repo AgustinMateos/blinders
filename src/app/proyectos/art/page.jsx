@@ -1,4 +1,4 @@
-import { projects } from '../../components/projectsData'; // Adjust path
+import { projects } from '../../../components/ProjectsData';
 import Link from 'next/link';
 import Image from 'next/image';
 
