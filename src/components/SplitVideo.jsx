@@ -232,10 +232,10 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             }}
           >
             <Image
-              src={currentImage === "left" ? "/SubtractRed.svg" : "/Subtract.svg"}
+              src={currentImage === "left" ? "/blinders/blindersart.svg" : "/blinders/blinderscorp.svg"}
               alt="Indicator icon"
-              width={40}
-              height={30}
+              width={85}
+              height={60}
               style={{ display: "block" }}
             />
             <span
@@ -247,7 +247,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
                 display: "inline-block",
               }}
             >
-              {currentImage === "left" ? "Art" : "Corp"}
+              {/* {currentImage === "left" ? "Art" : "Corp"} */}
             </span>
           </div>
           
