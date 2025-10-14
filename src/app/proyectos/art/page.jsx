@@ -18,7 +18,6 @@ export default function Art() {
                 priority
                 className="rounded-lg"
               />
-             
               <p className="mt-2 text-center">{project.title}</p>
             </div>
           </Link>
