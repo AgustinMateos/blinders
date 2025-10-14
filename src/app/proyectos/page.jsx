@@ -29,7 +29,7 @@ export default function Proyectos() {
           className="text-[#FFFFFF] font-bold text-[32px] md:text-[96px] leading-[100%] tracking-[0] uppercase"
         >
           Proyectos 
-        </h1><div className='pl-[40px]'><p style={{
+        </h1><div className='pl-[10px] md:pl-[40px]'><p style={{
             fontFamily: 'Big Shoulders, sans-serif',
             fontWeight: '700',
           }}
@@ -37,10 +37,10 @@ export default function Proyectos() {
         >{categoryLabel}</p></div>
       </div>
       {/* Category buttons */}
-      <div className="flex h-auto space-x-4 mx-auto p-4 mb-6">
+      <div className="flex h-auto space-x-4 ml-[15px] mt-[30px]  mb-6">
         <button
           onClick={() => handleCategoryChange('art')}
-          className={`py-2 font-dm-mono uppercase ${
+          className={` font-dm-mono uppercase ${
             selectedCategory === 'art' ? 'text-white' : 'text-[#717171]'
           }`}
         >
@@ -48,7 +48,7 @@ export default function Proyectos() {
         </button>
         <button
           onClick={() => handleCategoryChange('corp')}
-          className={`px-4 font-dm-mono h-auto uppercase border-l-amber-50 border-l-[2px] py-2 ${
+          className={`font-dm-mono h-auto uppercase border-l-amber-50 pl-[20px] border-l-[2px]  ${
             selectedCategory === 'corp' ? 'text-white' : 'text-[#717171]'
           }`}
         >

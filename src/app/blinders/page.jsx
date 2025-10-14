@@ -150,7 +150,7 @@ export default function AboutUs() {
         <div className="flex w-full md:pt-[80px] flex-col md:flex-row pb-[80px]">
           <div className="flex flex-col w-full md:w-[50%] h-[700px] md:h-[1000px] border-b-[#EAD18F] border-b-[4px]">
             <div className="bg-[url('/blinders/corp.svg')] h-[335px] md:h-[535px] w-full bg-contain bg-no-repeat md:bg-cover bg-center flex items-center justify-center">
-              <Image src="c" alt="Imagen interna corp" width={267} height={267}  className="max-h-[50%] max-w-[50%] object-contain h-[44px] w-[148px] md:h-[267px] md:w-[267px]" />
+              <Image src="/blinders/blinderscorp.svg" alt="Imagen interna corp" width={267} height={267}  className="max-h-[50%] max-w-[50%] object-contain h-[44px] w-[148px] md:h-[267px] md:w-[267px]" />
             </div>
             <div className="h-[320px] w-full flex flex-col justify-center items-center">
               <div className="h-[360px] md:h-[270px] w-[85%] flex flex-col justify-around">
