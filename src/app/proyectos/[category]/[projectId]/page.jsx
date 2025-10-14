@@ -10,7 +10,12 @@ export default function VideoPage({ params }) {
 
   return (
     <div className=" pt-[80px] mx-auto p-4 bg-black">
-      <h1 className="text-3xl font-bold text-white mb-4">{project.title}</h1>
+      <div className="w-full max-h-[100px] border-t-2 border-b-2 border-t-[#262626] border-b-[#262626] flex items-center  py-2">
+  <h1 className="text-[22px] md:text-3xl font-bold text-white">
+    {project.title}
+  </h1>
+</div>
+      
       {/* Render YouTube iframe */}
       <iframe
         width="100%"
