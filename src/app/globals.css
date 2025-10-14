@@ -5,9 +5,9 @@
  
 }
 
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Big+Shoulders:opsz,wght@10..72,100..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
 .custom-compare-slider .rcs-handle {
   width: 1px !important;
@@ -15,4 +15,16 @@
   border: none !important;
   padding: 0 !important;
   box-shadow: none !important;
+}
+
+.font-archivo {
+  font-family: 'Archivo', sans-serif;
+}
+
+.font-big-shoulders {
+  font-family: 'Big Shoulders', sans-serif;
+}
+
+.font-dm-mono {
+  font-family: 'DM Mono', monospace;
 }

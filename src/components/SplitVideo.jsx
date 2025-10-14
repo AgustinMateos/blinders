@@ -139,7 +139,8 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             transition: "opacity 1s ease-in-out",
           }}
         >
-          <div className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}>
+          <div style={{ fontFamily: 'Big Shoulders, sans-serif',  }}
+          className={` font-bold text-[54px] leading-none tracking-normal uppercase`}>
             CREATIVIDAD SIN LÍMITES
           </div>
         </div>
@@ -342,7 +343,8 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           transition: "opacity 1s ease-in-out", // CAMBIO: Agregar transición suave
         }}
       >
-        <div className={`${BigShoulders} font-bold text-[94px] leading-none tracking-normal uppercase`}>
+        <div style={{fontFamily: 'Big Shoulders, sans-serif', fontWeight: '700'}}
+         className={` font-bold text-[96px] leading-none  uppercase`}>
           CREATIVIDAD SIN LÍMITES
         </div>
       </div>
@@ -369,8 +371,11 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               textDecoration: "none",
               marginRight: "1rem",
               pointerEvents: "auto",
+              fontFamily: 'Big Shoulders, sans-serif',
+               fontWeight: '700'
             }}
-            className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}
+
+            className={` font-bold text-[54px] leading-none tracking-normal uppercase`}
           >
             ARTISTAS
           </a>
@@ -387,8 +392,10 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               color: position < 50 ? "red" : position === 50 ? "#FFFFFF" : "white",
               textDecoration: "none",
               pointerEvents: "auto",
+              fontFamily: 'Big Shoulders, sans-serif',
+               fontWeight: '700'
             }}
-            className={`${BigShoulders} font-bold text-[54px] leading-none tracking-normal uppercase`}
+            className={` font-bold text-[54px] leading-none tracking-normal uppercase`}
           >
             EMPRESAS
           </a>

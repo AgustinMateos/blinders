@@ -6,8 +6,9 @@ export default function Contacto() {
         <div className="pt-20 px-4 md:px-4 bg-black w-full min-h-screen text-white">
             <div className=" ">
                 {/* Header Section */}
-                <div className="w-full mx-1 border-t-[0.5px] border-b-[0.5px] h-[100px] md:h-[139px] border-[#222626] flex items-center justify-start">
-                    <h1 className={`${BigShoulders} text-[#FFFFFF] font-bold text-[32px] md:text-[96px] leading-[100%] tracking-[0] uppercase`}>
+                <div className="w-full mx-1  h-[100px] md:h-[139px] border-[#222626] border-t-[0.5px] border-b-[0.5px] flex items-center justify-start">
+                    <h1 style={{ fontFamily: 'Big Shoulders, sans-serif',
+               fontWeight: '700'}} className={` text-[#FFFFFF] font-bold text-[32px] md:text-[96px] leading-[100%] tracking-[0] uppercase`}>
                         Contacto
                     </h1>
                 </div>

@@ -16,19 +16,24 @@ export default function Proyectos() {
 
   return (
     <div className="bg-black pt-[80px]">
-      <h1 className="text-3xl mx-auto p-4 font-bold mb-4 text-white uppercase">Proyectos</h1>
-
+      <div className="w-full mx-1  h-[100px] md:h-[139px] border-[#222626] border-t-[0.5px] border-b-[0.5px] flex items-center justify-start">
+                    <h1 style={{ fontFamily: 'Big Shoulders, sans-serif',
+               fontWeight: '700'}} className={` text-[#FFFFFF] font-bold text-[32px] md:text-[96px] leading-[100%] tracking-[0] uppercase`}>
+                        Proyectos
+                    </h1>
+                </div>
       {/* Category buttons */}
       <div className="flex h-auto space-x-4 mx-auto p-4 mb-6">
         <button
           onClick={() => handleCategoryChange('art')}
-          className={`py-2 uppercase ${selectedCategory === 'art' ? 'text-white' : 'text-[#717171]'}`}
+          style={{fontFamily:''}}
+          className={`py-2 font-dm-mono uppercase ${selectedCategory === 'art' ? 'text-white' : 'text-[#717171]'}`}
         >
           Artistas
         </button>
         <button
           onClick={() => handleCategoryChange('corp')}
-          className={`px-4 h-auto uppercase border-l-amber-50 border-l-[2px] py-2 ${selectedCategory === 'corp' ? 'text-white' : 'text-[#717171]'}`}
+          className={`px-4 font-dm-mono h-auto uppercase border-l-amber-50 border-l-[2px] py-2 ${selectedCategory === 'corp' ? 'text-white' : 'text-[#717171]'}`}
         >
           Empresas
         </button>
@@ -48,10 +53,10 @@ export default function Proyectos() {
               <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-[12px] transition-all duration-300" />
               
               {/* Project title */}
-              <p className="absolute bottom-[60px] left-3 right-0 text-amber-50 py-2 z-10">
+              <p className="absolute font-dm-mono bottom-[60px] left-3 right-0 text-amber-50 py-2 z-10">
                 {project.tipo}
               </p>
-              <p className="absolute bottom-[30px] left-3 right-0 text-amber-50 py-2 z-10">
+              <p className="absolute font-archivo  bottom-[30px] left-3 right-0 text-amber-50 py-2 z-10">
                 {project.title}
               </p>
               
