@@ -70,28 +70,28 @@ const Navbar = () => {
                 <div className="border-b-[1px] md:w-[295px] border-[#F2F2F280] flex flex-col justify-end items-end"> 
                     <Link
                     href="#home"
-                    className="block px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
+                    className="block font-archivo px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
                     onClick={() => setIsOpen(false)}
                 >
                     Inicio
                 </Link>
                     <Link
                     href="/proyectos"
-                    className="block px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
+                    className="block font-archivo px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
                     onClick={() => setIsOpen(false)}
                 >
                     Proyectos
                 </Link>
                     <Link
                         href="/blinders"
-                        className="block px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
+                        className="block font-archivo px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
                         onClick={() => setIsOpen(false)}
                     >
                         Blinders
                     </Link>
                     <Link
                         href="/contacto"
-                        className="block px-4 py-4 text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
+                        className="block font-archivo px-4 py-4 text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
                         onClick={() => setIsOpen(false)}
                     >
                         Contacto
@@ -102,8 +102,8 @@ const Navbar = () => {
                     <Image src='/redes/logoyoutube.svg' width={20} height={24} alt="redes" />
                 </div>
                 <div className="flex flex-col pb-[90px] md:pb-[50px] ">
-                    <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%] ">blinders.av@gmail.com</p>
-                    <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%]">+54 9 11 5565-0732</p>
+                    <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%] font-archivo">blinders.av@gmail.com</p>
+                    <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%] font-archivo">+54 9 11 5565-0732</p>
                 </div>
 
 
