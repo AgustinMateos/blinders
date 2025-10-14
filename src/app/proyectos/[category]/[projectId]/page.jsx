@@ -21,6 +21,7 @@ export default function VideoPage({ params }) {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
+        className='h-[200px] md:h-[650px]'
       ></iframe>
     </div>
   );

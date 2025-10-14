@@ -365,7 +365,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
       >
         <div style={{ fontSize: "1.5rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
           <a
-            href="#artistas"
+            href="/proyectos"
             style={{
               color: position > 50 ? "red" : position === 50 ? "#FFFFFF" : "white",
               textDecoration: "none",
@@ -384,7 +384,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             style={{ margin: "0 1rem", display: "block" }}
           />
           <a
-            href="#empresas"
+            href="/artistas"
             style={{
               color: position < 50 ? "red" : position === 50 ? "#FFFFFF" : "white",
               textDecoration: "none",
