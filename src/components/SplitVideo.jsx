@@ -26,11 +26,11 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Hide text after 5 seconds on both mobile and desktop
+  // Hide text and swipe indicator after 5 seconds on both mobile and desktop
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowText(false);
-    }, 5000);
+    }, 7000);
     
     return () => clearTimeout(timer);
   }, []); // Se ejecuta solo una vez al montar el componente
@@ -123,6 +123,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           overflow: "hidden",
         }}
       >
+        {/* Title */}
         <div
           style={{
             position: "absolute",
@@ -139,12 +140,14 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             transition: "opacity 1s ease-in-out",
           }}
         >
-          <div style={{ fontFamily: 'Big Shoulders, sans-serif',  }}
-          className={` font-bold text-[54px] leading-none tracking-normal uppercase`}>
+          <div
+            style={{ fontFamily: 'Big Shoulders, sans-serif' }}
+            className={`font-bold text-[54px] leading-none tracking-normal uppercase`}
+          >
             CREATIVIDAD SIN LÍMITES
           </div>
         </div>
-        
+
         <Swiper
           direction="vertical"
           slidesPerView={1}
@@ -210,6 +213,8 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             </div>
           </SwiperSlide>
         </Swiper>
+
+        {/* Bottom UI: Image, Swipe Indicator, and VER Links */}
         <div
           style={{
             position: "absolute",
@@ -223,6 +228,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             pointerEvents: "none",
           }}
         >
+          {/* Left: Image and Text */}
           <div
             style={{
               display: "flex",
@@ -250,8 +256,31 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               {/* {currentImage === "left" ? "Art" : "Corp"} */}
             </span>
           </div>
-          
-          {/* Nuevo elemento con los links VER alineados a la derecha */}
+
+          {/* Swipe-down Indicator */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              pointerEvents: "none",
+              opacity: showText ? 1 : 0,
+              transition: "opacity 1s ease-in-out",
+            }}
+          >
+            <Image
+              src="/eclipse.svg"
+              alt="Swipe down to view more"
+              width={30}
+              height={30}
+              style={{
+                animation: "bounce 2s infinite",
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+              }}
+              aria-label="Swipe down to view more content"
+            />
+          </div>
+
+          {/* Right: VER Links */}
           <div
             style={{
               display: "flex",
@@ -260,7 +289,8 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               pointerEvents: "auto",
             }}
           >
-            <a className="flex w-auto"
+            <a
+              className="flex w-auto"
               href={currentImage === "left" ? "/proyectos" : "/proyectos"}
               style={{
                 color: "white",
@@ -274,10 +304,22 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               }}
             >
               <p>VER</p>
-              <Image src={'/flechaup.svg'} width={30} alt="flecha" height={30}/>
+              <Image src={'/flechaup.svg'} width={30} alt="flecha" height={30} />
             </a>
           </div>
         </div>
+
+        {/* Bounce Animation */}
+        <style jsx global>{`
+          @keyframes bounce {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(10px);
+            }
+          }
+        `}</style>
       </div>
     );
   }
@@ -339,12 +381,14 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           zIndex: 10,
           width: "100%",
           textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-          opacity: showText ? 1 : 0, // CAMBIO: Agregar control de visibilidad
-          transition: "opacity 1s ease-in-out", // CAMBIO: Agregar transición suave
+          opacity: showText ? 1 : 0,
+          transition: "opacity 1s ease-in-out",
         }}
       >
-        <div style={{fontFamily: 'Big Shoulders, sans-serif', fontWeight: '700'}}
-         className={` font-bold text-[96px] leading-none  uppercase`}>
+        <div
+          style={{ fontFamily: 'Big Shoulders, sans-serif', fontWeight: '700' }}
+          className={`font-bold text-[96px] leading-none uppercase`}
+        >
           CREATIVIDAD SIN LÍMITES
         </div>
       </div>
@@ -372,10 +416,9 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               marginRight: "1rem",
               pointerEvents: "auto",
               fontFamily: 'Big Shoulders, sans-serif',
-               fontWeight: '700'
+              fontWeight: '700'
             }}
-
-            className={` font-bold text-[54px] leading-none tracking-normal uppercase`}
+            className={`font-bold text-[54px] leading-none tracking-normal uppercase`}
           >
             ARTISTAS
           </a>
@@ -393,9 +436,9 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               textDecoration: "none",
               pointerEvents: "auto",
               fontFamily: 'Big Shoulders, sans-serif',
-               fontWeight: '700'
+              fontWeight: '700'
             }}
-            className={` font-bold text-[54px] leading-none tracking-normal uppercase`}
+            className={`font-bold text-[54px] leading-none tracking-normal uppercase`}
           >
             EMPRESAS
           </a>
