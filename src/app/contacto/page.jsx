@@ -83,11 +83,15 @@ export default function Contacto() {
                            </button>
                             <Image src={"/flecha.svg"} width={30} height={30} alt="flecha"/>
                         </div>
-                        <div className="w-[175px]  flex flex-col py-10 space-y-4">
-                            <div className="flex justify-center space-x-4">
-                                <Image src='/redes/logotiktok.svg' width={20} height={24} alt="redes" />
-                                <Image src='/redes/logoinstagram.svg' width={20} height={24} alt="redes" />
-                                <Image src='/redes/logoyoutube.svg' width={20} height={24} alt="redes" />
+                        <div className="w-auto  flex flex-col py-10 space-y-4">
+                            <div className="flex   space-x-4">
+                                <Image src='/redes/logoinstagram.svg' width={32} height={32} alt="redes" />
+                                <Image src='/redes/logoinstagram.svg' width={32} height={32} alt="redes" />
+                                <Image src='/redes/linkedin.svg' width={32} height={32} alt="redes" />
+                                <Image src='/redes/whatsapp.svg' width={32} height={32} alt="redes" />
+                                <Image src='/redes/logotiktok.svg' width={32} height={32} alt="redes" />
+                                 <Image src='/redes/vimeo.svg' width={32} height={32} alt="redes" />
+                                <Image src='/redes/logoyoutube.svg' width={32} height={32} alt="redes" />
                             </div>
                             <div className="">
                                 <p>blinders.av@gmail.com</p>

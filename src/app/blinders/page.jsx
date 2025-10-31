@@ -72,10 +72,10 @@ export default function AboutUs() {
           padding: '20px',
          
         }}
-        className='min-h- md:min-h-[690px] mt-0  pt-[0px] md:pt-[20px]  md:mt-[24px]'
+        className=' md:min-h-[690px] mt-0  pt-[0px] md:pt-[20px]  md:mt-[24px]'
       >
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <div className="h-[100vh] md:h-[690px] w-[798px]">
+          <div className="  h-[70vh] md:h-[690px] w-[798px]">
             <Image
               src="/blinders/blinders-aboutus.svg"
               alt="Blinders About Us"
@@ -86,16 +86,14 @@ export default function AboutUs() {
             />
           </div>
         </div>
-        <div className='top-[320px] md:top-[150px] absolute left-[20px] w-[90%]' >
+        <div className='top-[320px] md:top-[250px] absolute left-[20px] w-[90%]' >
           <h1 className={`${BigShoulders.className} pb-[25px] md:pb-[25px] md:font-bold md:text-[48px] md:leading-[100%] md:tracking-normal md:text-left md:uppercase font-bold text-[40px] leading-[100%] tracking-[0%] uppercase`}>
-            MATERIALIZAMOS VISIONES:
+            Creatividad sin limites
           </h1>
-          <h2 className={`${BigShoulders.className} pb-[25px] md:pl-[10px] md:pb-[25px] md:font-bold md:text-[48px] md:leading-[100%] md:tracking-normal md:text-left md:uppercase font-bold text-[40px] leading-[100%] tracking-[0%] uppercase`}>
-            TRANSFORMAMOS IDEAS EN EXPERIENCIAS.
+          <h2 className={`${BigShoulders.className} pb-[25px] md:pl-[45px] md:pb-[25px] md:font-bold md:text-[48px] md:leading-[100%] md:tracking-normal md:text-left md:uppercase font-bold text-[40px] leading-[100%] tracking-[0%] uppercase`}>
+            para elevar tu imagen.
           </h2>
-          <h2 className={`${BigShoulders.className} pb-[25px] md:pl-[20px] md:pb-[50px] md:font-bold md:text-[48px] md:leading-[100%] md:tracking-normal md:text-left md:uppercase font-bold text-[40px] leading-[100%] tracking-[0%] uppercase`}>
-            TRAZAMOS NUEVOS CAMINOS PARA HACERLAS REALIDAD.
-          </h2>
+          
         </div>
       </div>
       {/*historia */}
