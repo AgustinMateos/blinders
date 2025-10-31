@@ -108,16 +108,16 @@ export default function AboutUs() {
           <Image src="/blindersEstampa.svg" alt="Estampa" width={180} height={180} className="absolute bottom-[140px] left-[170px] md:bottom-[-5px] md:left-[280px]" />
           <div className='flex flex-col md:flex-row justify-around h-full items-center'>
             <div className='w-[320px]'>
-              <h3 className="pl-[15px] font-big-shoulders md:pl-[0px] font-bold text-[38px] leading-[50px] tracking-[100%] uppercase text-[#E3E3E3]">
+              <h3 className="pl-[15px] font-big-shoulders md:pl-[0px] font-bold text-[38px] md:leading-[50px] md:tracking-[100%] uppercase text-[#E3E3E3]">
                 En Blinders no hay fórmulas ni moldes.
               </h3>
             </div>
             <div className='w-[98%] md:w-[367px] h-auto md:border-l-[1px] md:border-l-[#757575]'>
-              <p className="md:pl-[35px] font-archivo font-medium text-[16px] leading-[150%] tracking-[1%] text-[#EBEBEB]">
+              <p className="md:pl-[35px] font-archivo font-medium text-[16px] md:leading-[150%] md:tracking-[1%] text-[#EBEBEB]">
                 Cada proyecto es un punto de partida distinto, con una historia por contar y un universo por crear.
               </p>
               <br />
-              <p className="md:pl-[35px] font-archivo font-medium text-[16px] leading-[150%] tracking-[1%] text-[#EBEBEB]">
+              <p className="md:pl-[35px] font-archivo font-medium text-[16px] md:leading-[150%] md:tracking-[1%] text-[#EBEBEB]">
                 Nos mueve la posibilidad de construir algo único, algo que conecte, emocione y deje huella.
               </p>
             </div>
