@@ -55,9 +55,9 @@ export default function VideoPage({ params }) {
               <Image
                 src="/play.svg"
                 alt="Reproducir"
-                width={98}
-                height={98}
-                className="ml-1"
+                width={78}
+                height={78}
+                className="ml-1 w-[48px] h-[48px] md:w-[78px] md:h-[78px]"
               />
             </div>
           </div>

@@ -97,21 +97,21 @@ export default function AboutUs() {
         </div>
       </div>
       {/*historia */}
-      <div className=' h-[380px] md:h-[315px]  flex flex-col md:flex-row items-center md:items-center justify-center w-full'>
-        <div className='p-[30px] md:p-[0px] h-[388px] md:h-[264px] w-[350px] md:w-[860px] bg-[#161616] relative'>
+      <div className=' h-[464px] md:h-[315px]  flex flex-col md:flex-row items-center md:items-center justify-center w-full'>
+        <div className='p-[15px] md:p-[0px] h-[564px] md:h-[264px] w-[350px] md:w-[900px] bg-[#161616] relative'>
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute top-[-10px] left-[-10px]" />
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute top-[-10px] right-[-10px]" />
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute bottom-[-10px] left-[-10px]" />
           <Image src="/cruz.svg" alt="Corner" width={24} height={24} className="absolute bottom-[-10px] right-[-10px]" />
           <Image src="/blindersEstampa.svg" alt="Estampa" width={180} height={180} className="absolute bottom-[140px] left-[170px] md:bottom-[-5px] md:left-[280px]" />
           <div className='flex flex-col md:flex-row justify-around h-full items-center'>
-            <div className='w-[320px]'>
-              <h3 className="pl-[15px] font-big-shoulders md:pl-[0px] font-bold text-[38px] md:leading-[50px] md:tracking-[100%] uppercase text-[#E3E3E3]">
-                En Blinders no hay fórmulas ni moldes.
+            <div className='w-auto md:w-[380px]'>
+              <h3 className=" font-big-shoulders md:pl-[0px] font-bold text-[32px] md:text-[38px] md:leading-[50px] md:tracking-[100%] uppercase text-[#E3E3E3]">
+                En blinders no hacemos simples videos, creamos experiencias cinematográficas
               </h3>
             </div>
             <div className='w-[98%] md:w-[367px] h-auto md:border-l-[1px] md:border-l-[#757575]'>
-              <p className="md:pl-[35px] font-archivo font-medium text-[16px] md:leading-[150%] md:tracking-[1%] text-[#EBEBEB]">
+              <p className="md:pl-[35px] font-archivo md:mb-[20px] font-medium text-[16px] md:leading-[150%] md:tracking-[1%] text-[#EBEBEB]">
                 Cada proyecto es un punto de partida distinto, con una historia por contar y un universo por crear.
               </p>
               <br />
@@ -133,7 +133,7 @@ export default function AboutUs() {
           onMouseMove={handleMouseMove}
         >
           {sliderImages.map((src, index) => (
-            <div key={index} className="w-[200px] h-[200px] md:w-[500px] md:h-[500px] flex-shrink-0 rounded-md overflow-hidden">
+            <div key={index} className="w-[300px] h-[400px] md:w-[500px] md:h-[500px] flex-shrink-0 rounded-md overflow-hidden">
               <Image src={src} alt={`Slide ${index + 1}`} width={500} height={500} className="w-full h-full object-cover" />
             </div>
           ))}

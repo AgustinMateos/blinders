@@ -135,7 +135,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             pointerEvents: "none",
             zIndex: 10,
             width: "100%",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+            
             opacity: showText ? 1 : 0,
             transition: "opacity 1s ease-in-out",
           }}
@@ -249,7 +249,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
                 color: "white",
                 fontSize: "1.2rem",
                 fontWeight: "bold",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+               
                 display: "inline-block",
               }}
             >
@@ -274,7 +274,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               height={30}
               style={{
                 animation: "bounce 2s infinite",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+               
               }}
               aria-label="Swipe down to view more content"
             />
@@ -297,7 +297,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
                 textDecoration: "none",
                 fontSize: "1rem",
                 fontWeight: "bold",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+                
                 padding: "8px 16px",
                 transition: "all 0.3s ease",
                 color: "#ffffff",
@@ -380,7 +380,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           pointerEvents: "none",
           zIndex: 10,
           width: "100%",
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+          
           opacity: showText ? 1 : 0,
           transition: "opacity 1s ease-in-out",
         }}
@@ -404,7 +404,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           zIndex: 20,
           width: "100%",
           padding: "1rem 0",
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+          
         }}
       >
         <div style={{ fontSize: "1.5rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
