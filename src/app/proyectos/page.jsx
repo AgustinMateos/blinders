@@ -70,7 +70,7 @@ export default function Proyectos() {
               <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-[12px] transition-all duration-300" />
 
               {/* Project title */}
-              <p className="absolute font-dm-mono bottom-[60px] left-3 right-0 text-amber-50 py-2 z-10">
+              <p className="absolute font-dm-mono bottom-[80px] md:bottom-[60px] left-3 right-0 text-amber-50 py-2 z-10">
                 {project.tipo}
               </p>
               <p className="absolute font-archivo bottom-[30px] left-3 right-0 text-amber-50 py-2 z-10">
