@@ -2,21 +2,29 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import React from 'react'; // ← Asegúrate de importar React
+import React from 'react'; // ← Necesario para React.use()
 import { projects } from '../../../../components/ProjectsData';
 
 export default function VideoPage({ params }) {
-  // Desestructurar params usando React.use()
+  // CORRECTO: desestructuramos la promesa con React.use()
   const { category, projectId } = React.use(params);
-  
+
   const project = projects[category]?.find((p) => p.id === projectId);
   const [isPlaying, setIsPlaying] = useState(false);
 
   if (!project) {
-    return <div className="text-white pt-[80px] text-center">Proyecto no encontrado</div>;
+    return (
+      <div className="text-white pt-[80px] text-center min-h-screen bg-black">
+        Proyecto no encontrado
+      </div>
+    );
   }
 
-  // Extraer ID del video de YouTube
+  // Logo según categoría
+  const logoSrc = category === 'art' ? '/SubtractRed2.svg' : '/Subtract2.svg';
+  const logoAlt = category === 'art' ? 'Artista' : 'Corporativo';
+
+  // Extraer ID de YouTube
   const getYoutubeId = (url) => {
     const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
     return match ? match[1] : null;
@@ -26,55 +34,51 @@ export default function VideoPage({ params }) {
   const thumbnail = project.cover;
 
   return (
-    <div className="pt-[80px]   bg-black min-h-screen">
-      {/* Título */}
-      <div className="w-full p-4 mx-auto max-h-[100px] md:max-h-[150px] mb-10 mt-5 border-t-2 border-b-2 border-t-[#262626] border-b-[#262626] flex items-center py-2 md:py-7">
-        <h1 className="text-[22px] md:text-[24px] font-bold text-white">
+    <div className="pt-[80px] bg-black min-h-screen">
+      {/* Título + Logo */}
+      <div className="w-full max-w-8xl mx-auto px-4 border-t-2 border-b-2 border-[#262626] flex items-center justify-between gap-6">
+        <h1 className="text-2xl md:text-4xl font-bold py-8  text-white tracking-wider">
           {project.title}
         </h1>
+
+        <div className="flex-shrink-0 h-auto">
+          <Image
+            src={logoSrc}
+            alt={logoAlt}
+            width={82}
+            height={139}
+            className="w-12 h-12 md:w-14 md:h-24 object-cover "
+          />
+        </div>
       </div>
 
-      {/* Contenedor del video */}
-      <div className="relative w-full h-[200px] md:h-[650px] bg-black overflow-hidden  shadow-2xl">
-        {/* Portada personalizada */}
-        {!isPlaying && (
+      {/* Video */}
+      <div className="relative w-full max-w-8xl mx-auto mt-10 bg-black overflow-hidden shadow-2xl aspect-video">
+        {!isPlaying ? (
           <div
             className="absolute inset-0 cursor-pointer flex items-center justify-center bg-cover bg-center"
+            style={{ backgroundImage: `url(${thumbnail})` }}
             onClick={() => setIsPlaying(true)}
           >
-            <Image
-              src={thumbnail}
-              alt={`Portada de ${project.title}`}
-              fill
-              className="object-cover"
-              priority
-            />
-
-            {/* Botón Play */}
-            <div className="absolute z-10 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center  transition-all duration-300 shadow-lg">
+            <div className="z-10 w-20 h-20 md:w-28 md:h-28 flex items-center justify-center  ">
               <Image
                 src="/play.svg"
-                alt="Reproducir"
-                width={78}
-                height={78}
-                className="ml-1 w-[48px] h-[48px] md:w-[78px] md:h-[78px]"
+                alt="Play"
+                width={80}
+                height={80}
+                className="w-12 h-12 md:w-20 md:h-20 ml-2"
               />
             </div>
           </div>
-        )}
-
-        {/* iframe del video */}
-        {isPlaying && (
+        ) : (
           <iframe
-            width="100%"
-            height="100%"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+            className="absolute inset-0 w-full h-full"
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
             title={project.title}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            className="absolute inset-0"
-          ></iframe>
+          />
         )}
       </div>
     </div>
