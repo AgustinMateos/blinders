@@ -343,7 +343,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
         width={24}
         height={24}
         className="absolute"
-        style={{ top: "100px", left: "15px", zIndex: 20 }}
+        style={{ top: "120px", left: "65px", zIndex: 20 }}
       />
       <Image
         src="/linesupder.svg"
@@ -351,7 +351,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
         width={24}
         height={24}
         className="absolute"
-        style={{ top: "100px", right: "15px", zIndex: 20 }}
+        style={{ top: "120px", right: "65px", zIndex: 20 }}
       />
       <Image
         src="/lineinfizq.svg"
@@ -359,7 +359,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
         width={24}
         height={24}
         className="absolute"
-        style={{ bottom: "20px", left: "15px", zIndex: 20 }}
+        style={{ bottom: "20px", left: "65px", zIndex: 20 }}
       />
       <Image
         src="/linebotrig.svg"
@@ -367,7 +367,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
         width={24}
         height={24}
         className="absolute"
-        style={{ bottom: "20px", right: "15px", zIndex: 20 }}
+        style={{ bottom: "20px", right: "65px", zIndex: 20 }}
       />
       <div
         style={{
