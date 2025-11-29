@@ -69,7 +69,7 @@ const Navbar = () => {
                 {/* Menu Links */}
                 <div className="border-b-[1px] md:w-[295px] border-[#F2F2F280] flex flex-col justify-end items-end"> 
                     <Link
-                    href="#home"
+                    href="/"
                     className="block font-archivo px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
                     onClick={() => setIsOpen(false)}
                 >
@@ -101,10 +101,17 @@ const Navbar = () => {
                     <Image src='/redes/logoinstagram.svg' width={20} height={24} alt="redes" />
                     <Image src='/redes/logoyoutube.svg' width={20} height={24} alt="redes" />
                 </div>
-                <div className="flex flex-col pb-[90px] md:pb-[50px] ">
+                <div className="flex flex-col pb-[10px] md:pb-[50px] ">
                     <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%] font-archivo">blinders.av@gmail.com</p>
                     <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%] font-archivo">+54 9 11 5565-0732</p>
                 </div>
+                <Link
+                        href="/terminos-y-condiciones"
+                        className="text-[#999999] font-medium pb-[70px] text-base leading-[150%] tracking-[1%] font-archivo hover:text-gray-300 "
+                        onClick={() => setIsOpen(false)}
+                    >
+                        Términos y condiciones
+                    </Link>
 
 
             </div>

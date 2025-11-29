@@ -6,11 +6,22 @@ export default function Contacto() {
         <div className="pt-20 px-4 md:px-4 bg-black w-full min-h-screen text-white">
             <div className=" ">
                 {/* Header Section */}
-                <div className="w-full mx-1  h-[100px] md:h-[139px] border-[#222626] border-t-[0.5px] border-b-[0.5px] flex items-center justify-start">
-                    <h1 style={{ fontFamily: 'Big Shoulders, sans-serif',
-               fontWeight: '700'}} className={` text-[#FFFFFF] font-bold text-[32px] md:text-[96px] leading-[100%] tracking-[0] uppercase`}>
-                        Contacto
+                <div className="w-full max-w-8xl mx-auto px-4 border-t-2 border-b-2 border-[#262626] flex items-center justify-between gap-6 h-[139px]">
+                    <h1 className="text-[32px]  md:text-[96px] uppercase py-8  text-white tracking-wider" style={{
+                        fontFamily: 'Big Shoulders, sans-serif',
+                        fontWeight: '700',
+                    }}>                          Contact
                     </h1>
+
+                    <div className="flex-shrink-0 h-auto">
+                        <Image
+                            src={'/SubtractRed2.svg'}
+                            alt={'logo'}
+                            width={82}
+                            height={139}
+                            className="w-12 h-12 md:w-14 md:h-24 object-cover "
+                        />
+                    </div>
                 </div>
 
                 {/* Main Content Section */}
@@ -79,9 +90,9 @@ export default function Contacto() {
                         </div>
                         <div className="flex flex-row  justify-end">
                             <button className=" w-[112px] font-normal text-[32px] leading-none tracking-normal uppercase bg-transparent  text-white  ">
-                            ENVIAR
-                           </button>
-                            <Image src={"/flecha.svg"} width={30} height={30} alt="flecha"/>
+                                ENVIAR
+                            </button>
+                            <Image src={"/flecha.svg"} width={30} height={30} alt="flecha" />
                         </div>
                         <div className="w-auto  flex flex-col py-10 space-y-4">
                             <div className="flex   space-x-4">
@@ -90,7 +101,7 @@ export default function Contacto() {
                                 <Image src='/redes/linkedin.svg' width={32} height={32} alt="redes" />
                                 <Image src='/redes/whatsapp.svg' width={32} height={32} alt="redes" />
                                 <Image src='/redes/logotiktok.svg' width={32} height={32} alt="redes" />
-                                 <Image src='/redes/vimeo.svg' width={32} height={32} alt="redes" />
+                                <Image src='/redes/vimeo.svg' width={32} height={32} alt="redes" />
                                 <Image src='/redes/logoyoutube.svg' width={32} height={32} alt="redes" />
                             </div>
                             <div className="">

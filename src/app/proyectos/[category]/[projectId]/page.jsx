@@ -37,7 +37,10 @@ export default function VideoPage({ params }) {
     <div className="pt-[80px] bg-black min-h-screen">
       {/* Título + Logo */}
       <div className="w-full max-w-8xl mx-auto px-4 border-t-2 border-b-2 border-[#262626] flex items-center justify-between gap-6">
-        <h1 className="text-2xl md:text-4xl font-bold py-8  text-white tracking-wider">
+        <h1 className="text-2xl md:text-4xl  py-8  text-white tracking-wider"style={{
+            fontFamily: 'Big Shoulders, sans-serif',
+            fontWeight: '700',
+          }}>
           {project.title}
         </h1>
 
