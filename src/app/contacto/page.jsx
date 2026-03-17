@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { BigShoulders } from "../ui/fonts";
-import CustomDropdown from "@/components/CustomDropDown";  // ajustá la ruta si está en otra carpeta
+import CustomDropdown from "@/components/CustomDropDown"; // ← Ajusta esta ruta si el archivo está en otra carpeta (ej: ../components/CustomDropdown)
 
 export default function Contacto() {
   const socialLinks = [
@@ -16,7 +16,7 @@ export default function Contacto() {
     { src: "/redes/logoyoutube.svg", alt: "YouTube Blinders", href: "https://www.youtube.com/@blindersaudiovisual", label: "YouTube Blinders Audiovisual" },
   ];
 
-  // Estado del formulario
+  // Estado del formulario (esto soluciona el error "formData is not defined")
   const [formData, setFormData] = useState({
     nombre: "",
     telefono: "",
@@ -157,7 +157,7 @@ export default function Contacto() {
                 type="button"
                 onClick={() => {
                   console.log("Formulario enviado:", formData);
-                  // Aquí podrías agregar fetch a tu backend o EmailJS
+                  // Aquí podrías agregar el envío real (fetch, EmailJS, etc.)
                 }}
                 className="w-[112px] font-normal text-[32px] leading-none tracking-normal uppercase bg-transparent text-white hover:text-red-500 transition-colors"
                 style={{
