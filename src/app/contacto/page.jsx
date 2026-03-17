@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-
-import CustomDropdown from "../../components/CustomDropDown.jsx";
-
+import CustomDropDown from '@/components/CustomDropDown';
 export default function Contacto() {
   const socialLinks = [
     { src: "/redes/logoinstagram.svg", alt: "Instagram Blinders Corp", href: "https://www.instagram.com/blinders.corp/", label: "Instagram Blinders Corp" },
@@ -121,7 +119,7 @@ export default function Contacto() {
             {/* Tipo de proyecto */}
             <div>
               <label className="block text-sm font-medium mb-2 text-gray-300">Tipo de proyecto</label>
-              <CustomDropdown
+              <CustomDropDown
                 options={[
                   { value: "", label: "¿Qué tienes en mente?" },
                   { value: "videoclip", label: "Videoclip" },
