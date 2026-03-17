@@ -1,29 +1,42 @@
-// CustomDropdown.jsx (o pegalo directo en Contacto)
+// src/app/contacto/CustomDropdown.jsx  (o donde prefieras colocarlo)
+
+"use client"; // Necesario porque usa useState y useEffect
+
 import React, { useState, useRef, useEffect } from "react";
 
-const CustomDropdown = ({ options, value, onChange, placeholder }) => {
+const CustomDropdown = ({
+  options = [],
+  value = "",
+  onChange = () => {},
+  placeholder = "Selecciona una opción",
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Cerrar al clickear afuera
+  // Cerrar al hacer click afuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
-  const selectedOption = options.find(opt => opt.value === value) || { label: placeholder };
+  const selectedOption = options.find((opt) => opt.value === value) || {
+    label: placeholder,
+  };
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Trigger / Botón visible */}
+      {/* Trigger */}
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((prev) => !prev)}
         className="
           w-full px-4 py-3 
           bg-black/40 
@@ -41,22 +54,23 @@ const CustomDropdown = ({ options, value, onChange, placeholder }) => {
           {selectedOption.label}
         </span>
         <svg
-          className={`w-5 h-5 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-5 h-5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
 
-      {/* Lista de opciones (dropdown) */}
+      {/* Dropdown menu */}
       {isOpen && (
         <div
           className="
-            absolute z-10 mt-1 w-full 
+            absolute z-50 mt-1 w-full 
             bg-[#0f0f0f] border border-gray-600 
-            rounded-lg shadow-xl max-h-60 overflow-auto
+            rounded-lg shadow-2xl max-h-60 overflow-y-auto
           "
         >
           {options.map((option) => (
@@ -69,10 +83,10 @@ const CustomDropdown = ({ options, value, onChange, placeholder }) => {
               }}
               className={`
                 w-full px-4 py-3 text-left text-base
-                ${value === option.value 
-                  ? "bg-red-900/30 text-red-300" 
-                  : "text-white hover:bg-gray-800/50"}
-                transition-colors
+                transition-colors duration-150
+                ${value === option.value
+                  ? "bg-red-900/30 text-red-300 font-medium"
+                  : "text-white hover:bg-gray-800/70"}
               `}
             >
               {option.label}

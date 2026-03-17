@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-
+import { BigShoulders } from "../ui/fonts";
 import CustomDropdown from "@/components/CustomDropDown";
 
 export default function Contacto() {
@@ -18,12 +18,12 @@ export default function Contacto() {
 
   // ESTO ES LO QUE FALTABA → DECLARACIÓN DEL ESTADO
   const [formData, setFormData] = useState({
-    nombre: "",
-    telefono: "",
-    email: "",
-    tipoProyecto: "",
-    mensaje: "",
-  });
+  nombre: "",
+  telefono: "",
+  email: "",
+  tipoProyecto: "",
+  mensaje: "",
+});
 
   return (
     <div className="pt-20 px-4 md:px-4 bg-black w-full min-h-screen text-white">
