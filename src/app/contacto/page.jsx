@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { BigShoulders } from "../ui/fonts";
-import CustomDropdown from "./CustomDropdown"; // ajusta la ruta si es necesario
+import CustomDropdown from "@/components/CustomDropDown";
 
 export default function Contacto() {
   const socialLinks = [
