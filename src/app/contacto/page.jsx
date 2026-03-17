@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { BigShoulders } from "../ui/fonts";
-import CustomDropdown from "@/components/CustomDropDown"; // ← Ajusta esta ruta si el archivo está en otra carpeta (ej: ../components/CustomDropdown)
+import CustomDropdown from "./CustomDropdown"; // ajusta la ruta si es necesario
 
 export default function Contacto() {
   const socialLinks = [
@@ -16,7 +16,7 @@ export default function Contacto() {
     { src: "/redes/logoyoutube.svg", alt: "YouTube Blinders", href: "https://www.youtube.com/@blindersaudiovisual", label: "YouTube Blinders Audiovisual" },
   ];
 
-  // Estado del formulario (esto soluciona el error "formData is not defined")
+  // ESTO ES LO QUE FALTABA → DECLARACIÓN DEL ESTADO
   const [formData, setFormData] = useState({
     nombre: "",
     telefono: "",
@@ -52,7 +52,7 @@ export default function Contacto() {
 
       {/* Main Content Section */}
       <div className="w-full flex flex-col md:flex-row justify-between py-10">
-        {/* Left Side (Image Placeholder) */}
+        {/* Left Side (Image) */}
         <div className="w-full md:w-[50%] md:relative hidden md:block">
           <div className="w-full h-[730px] relative">
             <Image
@@ -62,8 +62,6 @@ export default function Contacto() {
               className="object-cover"
               priority
             />
-
-            {/* Logo encima de la imagen */}
             <div className="absolute inset-0 flex items-center justify-center bg-black/40">
               <div className="relative w-[100%] max-w-[150px] aspect-[3/4] md:aspect-square">
                 <Image
@@ -120,7 +118,7 @@ export default function Contacto() {
               />
             </div>
 
-            {/* Tipo de proyecto - Custom Dropdown */}
+            {/* Tipo de proyecto */}
             <div>
               <label className="block text-sm font-medium mb-2 text-gray-300">Tipo de proyecto</label>
               <CustomDropdown
@@ -151,14 +149,11 @@ export default function Contacto() {
               />
             </div>
 
-            {/* Botón ENVIAR */}
+            {/* Botón */}
             <div className="flex flex-row justify-end items-center gap-3">
               <button
                 type="button"
-                onClick={() => {
-                  console.log("Formulario enviado:", formData);
-                  // Aquí podrías agregar el envío real (fetch, EmailJS, etc.)
-                }}
+                onClick={() => console.log("Enviado:", formData)}
                 className="w-[112px] font-normal text-[32px] leading-none tracking-normal uppercase bg-transparent text-white hover:text-red-500 transition-colors"
                 style={{
                   fontFamily: "'Schabo Condensed', sans-serif",
