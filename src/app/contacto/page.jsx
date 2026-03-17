@@ -167,7 +167,7 @@ export default function Contacto() {
           </div>
 
           {/* Redes y contacto */}
-          <div className="w-auto flex flex-col py-10 space-y-4">
+          <div className="w-auto flex flex-col py-10 space-y-4 border-t-2 border-[#262626]">
             <div className="flex space-x-4">
               {socialLinks.map((link, index) => (
                 <a
