@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { BigShoulders } from "../ui/fonts";
+
 import CustomDropdown from "@/components/CustomDropDown";
 
 export default function Contacto() {

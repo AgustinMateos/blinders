@@ -106,7 +106,7 @@ export default function AboutUs() {
           <Image src="/blindersEstampa.svg" alt="Estampa" width={180} height={180} className="absolute bottom-[140px] left-[170px] md:bottom-[-5px] md:left-[280px]" />
           <div className='flex flex-col md:flex-row justify-around h-full items-center'>
             <div className='w-auto md:w-[380px]'>
-              <h3 className=" font-big-shoulders md:pl-[0px] font-bold text-[32px] md:text-[38px] md:leading-[50px] md:tracking-[100%] uppercase text-[#E3E3E3]">
+              <h3 className=" font-big-shoulders md:pl-[0px] font-bold text-[32px] md:text-[38px] md:leading-[50px]  uppercase text-[#E3E3E3]">
                 En blinders no hacemos simples videos, creamos experiencias cinematográficas
               </h3>
             </div>

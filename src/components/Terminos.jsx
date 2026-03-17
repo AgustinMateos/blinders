@@ -503,7 +503,7 @@ const Terminos = () => {
                 className="w-full px-5 py-4 md:py-5 flex items-center justify-between text-left hover:bg-[#111] transition-colors"
               >
                 <div className="flex items-center gap-4">
-                  <span className="text-xl md:text-2xl font-bold text-red-600 min-w-[2.5rem]">
+                  <span className="text-xl md:text-2xl font-bold text-[#717171] min-w-[2.5rem]">
                     {item.id}.
                   </span>
                   <h3 className="text-lg md:text-xl font-semibold">{item.title}</h3>
