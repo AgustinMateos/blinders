@@ -16,7 +16,7 @@ export default function ContactoComponent() {
   ];
 
   // ESTO ES LO QUE FALTABA → DECLARACIÓN DEL ESTADO
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({ 
   nombre: "",
   telefono: "",
   email: "",
