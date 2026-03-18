@@ -7,7 +7,7 @@ import { Archivo, Big_Shoulders, DM_Mono } from 'next/font/google';  // ← prue
 const archivo = Archivo({
   subsets: ['latin'],
   variable: '--font-archivo',
-  weight: ['100', '900'],  // reduce si podés
+  weight: ['100','500', '900'],  // reduce si podés
   display: 'swap',
   adjustFontFallback: false,
 });

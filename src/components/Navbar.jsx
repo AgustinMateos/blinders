@@ -11,14 +11,14 @@ const Navbar = () => {
         setIsOpen(!isOpen);
     };
     const socialLinksNavbar = [
-  { src: "/redes/logoinstagram.svg", alt: "Instagram Blinders Corp", href: "https://www.instagram.com/blinders.corp/", label: "Instagram Blinders Corp" },
-  { src: "/redes/logoinstagram.svg", alt: "Instagram Blinders Art", href: "https://www.instagram.com/blinders.art/", label: "Instagram Blinders Art" },
-  { src: "/redes/linkedin.svg", alt: "LinkedIn Blinders", href: "https://www.linkedin.com/company/blinders-audiovisual/", label: "LinkedIn Blinders Audiovisual" },
-  { src: "/redes/whatsapp.svg", alt: "WhatsApp Blinders", href: "https://api.whatsapp.com/send/?phone=5491155650732&text&type=phone_number&app_absent=0", label: "WhatsApp Blinders" },
-  { src: "/redes/logotiktok.svg", alt: "TikTok Blinders", href: "https://www.tiktok.com/@blindersaudiovisual", label: "TikTok Blinders Audiovisual" },
-  { src: "/redes/vimeo.svg", alt: "Vimeo Blinders", href: "https://vimeo.com/user247870072", label: "Vimeo Blinders Corp" },
-  { src: "/redes/logoyoutube.svg", alt: "YouTube Blinders", href: "https://www.youtube.com/@blindersaudiovisual", label: "YouTube Blinders Audiovisual" },
-];
+        { src: "/redes/logoinstagram.svg", alt: "Instagram Blinders Corp", href: "https://www.instagram.com/blinders.corp/", label: "Instagram Blinders Corp" },
+        { src: "/redes/logoinstagram.svg", alt: "Instagram Blinders Art", href: "https://www.instagram.com/blinders.art/", label: "Instagram Blinders Art" },
+        { src: "/redes/linkedin.svg", alt: "LinkedIn Blinders", href: "https://www.linkedin.com/company/blinders-audiovisual/", label: "LinkedIn Blinders Audiovisual" },
+        { src: "/redes/whatsapp.svg", alt: "WhatsApp Blinders", href: "https://api.whatsapp.com/send/?phone=5491155650732&text&type=phone_number&app_absent=0", label: "WhatsApp Blinders" },
+        { src: "/redes/logotiktok.svg", alt: "TikTok Blinders", href: "https://www.tiktok.com/@blindersaudiovisual", label: "TikTok Blinders Audiovisual" },
+        { src: "/redes/vimeo.svg", alt: "Vimeo Blinders", href: "https://vimeo.com/user247870072", label: "Vimeo Blinders Corp" },
+        { src: "/redes/logoyoutube.svg", alt: "YouTube Blinders", href: "https://www.youtube.com/@blindersaudiovisual", label: "YouTube Blinders Audiovisual" },
+    ];
     return (
         <nav className="fixed top-0 left-0 w-full p-4 flex justify-between items-center z-100 text-white">
             {/* Logo/Brand */}
@@ -75,21 +75,21 @@ const Navbar = () => {
                 </button>
 
                 {/* Menu Links */}
-                <div className="border-b-[1px] md:w-[295px] border-[#F2F2F280] flex flex-col justify-end items-end"> 
+                <div className="border-b-[1px] md:w-[295px] border-[#F2F2F280] flex flex-col justify-end items-end">
                     <Link
-                    href="/"
-                    className="block font-archivo px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
-                    onClick={() => setIsOpen(false)}
-                >
-                    Inicio
-                </Link>
+                        href="/"
+                        className="block font-archivo font-medium px-4 py-4  text-white hover:text-gray-300  text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        Inicio
+                    </Link>
                     <Link
-                    href="/proyectos"
-                    className="block font-archivo px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
-                    onClick={() => setIsOpen(false)}
-                >
-                    Proyectos
-                </Link>
+                        href="/proyectos"
+                        className="block font-archivo px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        Proyectos
+                    </Link>
                     <Link
                         href="/blinders"
                         className="block font-archivo px-4 py-4  text-white hover:text-gray-300 font-medium text-[32px] md:text-[64px] leading-[100%] tracking-[0]"
@@ -104,36 +104,37 @@ const Navbar = () => {
                     >
                         Contacto
                     </Link></div>
-                <div className="flex w-[275px] pt-[30px] pb-[15px] justify-evenly">
-  {socialLinksNavbar.map((link, index) => (
-    <a
-      key={index}
-      href={link.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={link.label}
-      className="hover:opacity-80 transition-opacity"
-    >
-      <Image
-        src={link.src}
-        width={32}
-        height={32}
-        alt={link.alt}
-      />
-    </a>
-  ))}
-</div>
+                <div className="flex w-[300px] pt-[30px] pb-[15px] justify-evenly">
+                    {socialLinksNavbar.map((link, index) => (
+                        <a
+                            key={index}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={link.label}
+                            className="hover:opacity-80 transition-opacity p-2"
+                        >
+                            <Image
+                                src={link.src}
+                                width={32}
+                                height={32}
+                               
+                                alt={link.alt}
+                            />
+                        </a>
+                    ))}
+                </div>
                 <div className="flex flex-col pb-[10px] md:pb-[50px] ">
                     <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%] font-archivo pb-4">blinders.av@gmail.com</p>
                     <p className="text-[#FFFFFF] font-medium text-base leading-[150%] tracking-[1%] font-archivo">+54 9 11 5565-0732</p>
                 </div>
                 <Link
-                        href="/terminos-y-condiciones"
-                        className="text-[#999999] font-medium pb-[70px] text-base leading-[150%] tracking-[1%] font-archivo hover:text-gray-300 "
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Términos y condiciones
-                    </Link>
+                    href="/terminos-y-condiciones"
+                    className="text-[#999999] font-medium pb-[70px] text-base leading-[150%] tracking-[1%] font-archivo hover:text-gray-300 "
+                    onClick={() => setIsOpen(false)}
+                >
+                    Términos y condiciones
+                </Link>
 
 
             </div>
