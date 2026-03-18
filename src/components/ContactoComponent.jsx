@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import CustomDropDown from "./CustomDropDown";
+import CustomDropDown from "@/components/CustomDropDown"
 
 export default function ContactoComponent() {
   const socialLinks = [

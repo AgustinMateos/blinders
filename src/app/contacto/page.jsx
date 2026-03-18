@@ -1,5 +1,6 @@
-import ContactoComponent from '@/components/ContactoComponent'
 import React from 'react'
+import ContactoComponent from '@/components/ContactoComponent'
+
 
 const page = () => {
   return (
