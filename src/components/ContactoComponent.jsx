@@ -1,28 +1,93 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import CustomDropDown from "@/components/CustomDropDown"
 
 export default function ContactoComponent() {
   const socialLinks = [
-    { src: "/redes/logoinstagram.svg", alt: "Instagram Blinders Corp", href: "https://www.instagram.com/blinders.corp/", label: "Instagram Blinders Corp" },
-    { src: "/redes/logoinstagram.svg", alt: "Instagram Blinders Art", href: "https://www.instagram.com/blinders.art/", label: "Instagram Blinders Art" },
-    { src: "/redes/linkedin.svg", alt: "LinkedIn Blinders", href: "https://www.linkedin.com/company/blinders-audiovisual/", label: "LinkedIn Blinders Audiovisual" },
-    { src: "/redes/whatsapp.svg", alt: "WhatsApp Blinders", href: "https://api.whatsapp.com/send/?phone=5491155650732&text&type=phone_number&app_absent=0", label: "WhatsApp Blinders" },
-    { src: "/redes/logotiktok.svg", alt: "TikTok Blinders", href: "https://www.tiktok.com/@blindersaudiovisual", label: "TikTok Blinders Audiovisual" },
-    { src: "/redes/vimeo.svg", alt: "Vimeo Blinders", href: "https://vimeo.com/user247870072", label: "Vimeo Blinders Corp" },
-    { src: "/redes/logoyoutube.svg", alt: "YouTube Blinders", href: "https://www.youtube.com/@blindersaudiovisual", label: "YouTube Blinders Audiovisual" },
+    {
+      src: "/redes/logoinstagram.svg",
+      alt: "Instagram Blinders Corp",
+      href: "https://www.instagram.com/blinders.corp/",
+      label: "Instagram Blinders Corp",
+    },
+    {
+      src: "/redes/logoinstagram.svg",
+      alt: "Instagram Blinders Art",
+      href: "https://www.instagram.com/blinders.art/",
+      label: "Instagram Blinders Art",
+    },
+    {
+      src: "/redes/linkedin.svg",
+      alt: "LinkedIn Blinders",
+      href: "https://www.linkedin.com/company/blinders-audiovisual/",
+      label: "LinkedIn Blinders Audiovisual",
+    },
+    {
+      src: "/redes/whatsapp.svg",
+      alt: "WhatsApp Blinders",
+      href: "https://api.whatsapp.com/send/?phone=5491155650732&text&type=phone_number&app_absent=0",
+      label: "WhatsApp Blinders",
+    },
+    {
+      src: "/redes/logotiktok.svg",
+      alt: "TikTok Blinders",
+      href: "https://www.tiktok.com/@blindersaudiovisual",
+      label: "TikTok Blinders Audiovisual",
+    },
+    {
+      src: "/redes/vimeo.svg",
+      alt: "Vimeo Blinders",
+      href: "https://vimeo.com/user247870072",
+      label: "Vimeo Blinders Corp",
+    },
+    {
+      src: "/redes/logoyoutube.svg",
+      alt: "YouTube Blinders",
+      href: "https://www.youtube.com/@blindersaudiovisual",
+      label: "YouTube Blinders Audiovisual",
+    },
   ];
 
-  // ESTO ES LO QUE FALTABA → DECLARACIÓN DEL ESTADO
-  const [formData, setFormData] = useState({ 
-  nombre: "",
-  telefono: "",
-  email: "",
-  tipoProyecto: "",
-  mensaje: "",
-});
+  const [formData, setFormData] = useState({
+    nombre: "",
+    telefono: "",
+    email: "",
+    tipoProyecto: "",
+    mensaje: "",
+  });
+
+  // Estado y lógica del dropdown integrado
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const options = [
+    { value: "", label: "¿Qué tienes en mente?" },
+    { value: "videoclip", label: "Videoclip" },
+    { value: "show", label: "Show" },
+    { value: "evento", label: "Evento" },
+    { value: "fashionfilm", label: "Fashionfilm" },
+    { value: "branding", label: "Branding" },
+    { value: "otro", label: "Otro" },
+  ];
+
+  const selectedOption =
+    options.find((opt) => opt.value === formData.tipoProyecto) || {
+      label: "¿Qué tienes en mente?",
+    };
 
   return (
     <div className="pt-20 px-4 md:px-4 bg-black w-full min-h-screen text-white">
@@ -40,8 +105,8 @@ export default function ContactoComponent() {
 
         <div className="flex-shrink-0 h-auto">
           <Image
-            src={"/SubtractRed2.svg"}
-            alt={"logo"}
+            src="/SubtractRed2.svg"
+            alt="logo"
             width={82}
             height={139}
             className="w-12 h-12 md:w-14 md:h-24 object-cover"
@@ -51,7 +116,7 @@ export default function ContactoComponent() {
 
       {/* Main Content Section */}
       <div className="w-full flex flex-col md:flex-row justify-between py-10">
-        {/* Left Side (Image) */}
+        {/* Left Side (Image) - visible solo en desktop */}
         <div className="w-full md:w-[50%] md:relative hidden md:block">
           <div className="w-full h-[730px] relative">
             <Image
@@ -76,16 +141,19 @@ export default function ContactoComponent() {
 
         {/* Right Side (Form) */}
         <div className="w-full md:w-[45%] md:pr-[30px] space-y-6">
-          {/* Form Fields */}
           <div className="space-y-6">
             {/* Nombre */}
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">Nombre</label>
+              <label className="block text-sm font-medium mb-2 text-gray-300">
+                Nombre
+              </label>
               <input
                 type="text"
                 name="nombre"
                 value={formData.nombre}
-                onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, nombre: e.target.value })
+                }
                 className="w-full px-4 py-3 bg-black/40 border border-gray-600 rounded-lg text-white text-base placeholder:text-gray-500 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
                 placeholder="Nombre"
               />
@@ -93,12 +161,16 @@ export default function ContactoComponent() {
 
             {/* Teléfono */}
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">Teléfono</label>
+              <label className="block text-sm font-medium mb-2 text-gray-300">
+                Teléfono
+              </label>
               <input
                 type="tel"
                 name="telefono"
                 value={formData.telefono}
-                onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, telefono: e.target.value })
+                }
                 className="w-full px-4 py-3 bg-black/40 border border-gray-600 rounded-lg text-white text-base placeholder:text-gray-500 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
                 placeholder="+54 9 11111111"
               />
@@ -106,62 +178,135 @@ export default function ContactoComponent() {
 
             {/* Correo */}
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">Correo electrónico</label>
+              <label className="block text-sm font-medium mb-2 text-gray-300">
+                Correo electrónico
+              </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full px-4 py-3 bg-black/40 border border-gray-600 rounded-lg text-white text-base placeholder:text-gray-500 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
                 placeholder="nombre@ejemplo.com"
               />
             </div>
 
-            {/* Tipo de proyecto */}
+            {/* Tipo de proyecto - Dropdown integrado */}
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">Tipo de proyecto</label>
-              <CustomDropDown
-                options={[
-                  { value: "", label: "¿Qué tienes en mente?" },
-                  { value: "videoclip", label: "Videoclip" },
-                  { value: "show", label: "Show" },
-                  { value: "evento", label: "Evento" },
-                  { value: "fashionfilm", label: "Fashionfilm" },
-                  { value: "branding", label: "Branding" },
-                  { value: "otro", label: "Otro" },
-                ]}
-                value={formData.tipoProyecto}
-                onChange={(val) => setFormData({ ...formData, tipoProyecto: val })}
-                placeholder="¿Qué tienes en mente?"
-              />
+              <label className="block text-sm font-medium mb-2 text-gray-300">
+                Tipo de proyecto
+              </label>
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen((prev) => !prev)}
+                  className="
+                    w-full px-4 py-3 
+                    bg-black/40 
+                    border border-gray-600 
+                    rounded-lg 
+                    text-white text-base text-left
+                    focus:outline-none 
+                    focus:border-red-600
+                    focus:ring-1 focus:ring-red-600/50 
+                    transition-all duration-200
+                    flex items-center justify-between
+                  "
+                >
+                  <span
+                    className={
+                      formData.tipoProyecto ? "text-white" : "text-gray-500"
+                    }
+                  >
+                    {selectedOption.label}
+                  </span>
+                  <svg
+                    className={`w-5 h-5 transition-transform duration-200 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                {isOpen && (
+                  <div
+                    className="
+                      absolute z-50 mt-1 w-full 
+                      bg-[#0f0f0f] border border-gray-600 
+                      rounded-lg shadow-2xl max-h-60 overflow-y-auto
+                    "
+                  >
+                    {options.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          setFormData({
+                            ...formData,
+                            tipoProyecto: option.value,
+                          });
+                          setIsOpen(false);
+                        }}
+                        className={`
+                          w-full px-4 py-3 text-left text-base
+                          transition-colors duration-150
+                          ${
+                            formData.tipoProyecto === option.value
+                              ? "bg-red-900/30 text-red-300 font-medium"
+                              : "text-white hover:bg-gray-800/70"
+                          }
+                        `}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Mensaje */}
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">Mensaje</label>
+              <label className="block text-sm font-medium mb-2 text-gray-300">
+                Mensaje
+              </label>
               <textarea
                 name="mensaje"
                 value={formData.mensaje}
-                onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, mensaje: e.target.value })
+                }
                 className="w-full px-4 py-3 bg-black/40 border border-gray-600 rounded-lg text-white text-base placeholder:text-gray-500 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200 resize-none min-h-[120px]"
                 placeholder="Agrega un mensaje..."
               />
             </div>
 
-            {/* Botón */}
+            {/* Botón Enviar */}
             <div className="flex flex-row justify-end items-center gap-3">
               <button
                 type="button"
                 onClick={() => console.log("Enviado:", formData)}
                 className="w-[112px] font-normal text-[32px] leading-none tracking-normal uppercase bg-transparent text-white hover:text-red-500 transition-colors"
-          style={{
-            fontFamily: "Big Shoulders, sans-serif",
-            fontWeight: "700",
-          }}
+                style={{
+                  fontFamily: "Big Shoulders, sans-serif",
+                  fontWeight: "700",
+                }}
               >
                 ENVIAR
               </button>
-              <Image src={"/flecha.svg"} width={30} height={30} alt="flecha" />
+              <Image src="/flecha.svg" width={30} height={30} alt="flecha" />
             </div>
           </div>
 
