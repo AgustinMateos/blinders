@@ -92,27 +92,33 @@ export default function ContactoComponent() {
   return (
     <div className="pt-20 px-4 md:px-4 bg-black w-full min-h-screen text-white">
       {/* Header Section */}
-      <div className="w-full max-w-8xl mx-auto px-4 border-t-2 border-b-2 border-[#262626] flex items-center justify-between gap-6 h-[139px]">
-        <h1
-          className="text-[32px] md:text-[96px] uppercase py-8 text-white tracking-wider"
-          style={{
-            fontFamily: "Big Shoulders, sans-serif",
-            fontWeight: "700",
-          }}
-        >
-          Contacto
-        </h1>
+      <div className="border-t-1 border-b-1 border-[#262626] h-[120px] md:h-[139px] bg-black flex items-center justify-between px-4 md:px-8 overflow-hidden">
+  {/* Izquierda: Título principal horizontal */}
+  <h1
+    className="
+      text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
+      uppercase font-black tracking-wider text-white
+    "
+    style={{ fontFamily: "'Big Shoulders', sans-serif" }}
+  >
+    Contacto
+  </h1>
 
-        <div className="flex-shrink-0 h-auto">
-          <Image
-            src="/SubtractRed2.svg"
-            alt="logo"
-            width={82}
-            height={139}
-            className="w-12 h-12 md:w-14 md:h-24 object-cover"
-          />
-        </div>
-      </div>
+  {/* Derecha: BLINDERS vertical */}
+  <div className="h-full flex items-end  w-[82px] border-l-1 border-r-1 border-[#262626]">
+    <h2
+      className="
+        text-[10px] 
+        
+        uppercase font-black tracking-[0.4em] p-2 text-white
+        [writing-mode:vertical-rl] rotate-180
+      "
+      style={{ fontFamily: "'Big Shoulders', sans-serif" }}
+    >
+      BLINDERS
+    </h2>
+  </div>
+</div>
 
       {/* Main Content Section */}
       <div className="w-full flex flex-col md:flex-row justify-between py-10">

@@ -466,25 +466,38 @@ const Terminos = () => {
   };
 
   return (
-    <div className="pt-20 px-4 md:px-8 bg-black min-h-screen text-white">
+    <div className="pt-20 px-4  bg-black min-h-screen text-white">
       <div className=" mx-auto">
 
         {/* Header */}
-        <div className="border-t-2 border-b-2 border-[#262626] flex items-center justify-between h-[120px] md:h-[139px] px-4 md:px-0">
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl uppercase tracking-wider font-bold"
-            style={{ fontFamily: "'Big Shoulders', sans-serif", fontWeight: 700 }}
-          >
-            Términos y condiciones
-          </h1>
-          <Image
-            src="/SubtractRed2.svg"
-            alt="Blinders Logo"
-            width={82}
-            height={139}
-            className="w-16 md:w-20 lg:w-24 h-auto object-contain"
-          />
-        </div>
+        {/* Header - TÉRMINOS Y CONDICIONES horizontal + BLINDERS vertical a la derecha */}
+<div className="border-t-1 border-b-1 border-[#262626] h-[120px] md:h-[139px] bg-black flex items-center justify-between px-4 md:px-8 overflow-hidden">
+  {/* Izquierda: Título principal horizontal */}
+  <h1
+    className="
+      text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
+      uppercase font-black tracking-wider text-white
+    "
+    style={{ fontFamily: "'Big Shoulders', sans-serif" }}
+  >
+    TÉRMINOS Y CONDICIONES
+  </h1>
+
+  {/* Derecha: BLINDERS vertical */}
+  <div className="h-full flex items-end  w-[82px] border-l-1 border-r-1 border-[#262626]">
+    <h2
+      className="
+        text-[10px] 
+        
+        uppercase font-black tracking-[0.4em] p-2 text-white
+        [writing-mode:vertical-rl] rotate-180
+      "
+      style={{ fontFamily: "'Big Shoulders', sans-serif" }}
+    >
+      BLINDERS
+    </h2>
+  </div>
+</div>
 
         {/* Fecha de actualización */}
         <p className="mt-8 mb-10 text-gray-400 text-center md:text-left">
