@@ -4,7 +4,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 
-const CustomDropdown = ({
+const CustomDropDown = ({
   options = [],
   value = "",
   onChange = () => {},
@@ -98,4 +98,4 @@ const CustomDropdown = ({
   );
 };
 
-export default CustomDropdown;
+export default CustomDropDown;
