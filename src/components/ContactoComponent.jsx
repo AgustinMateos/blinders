@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import CustomDropDown from "./CustomDropDown";
+
 export default function ContactoComponent() {
   const socialLinks = [
     { src: "/redes/logoinstagram.svg", alt: "Instagram Blinders Corp", href: "https://www.instagram.com/blinders.corp/", label: "Instagram Blinders Corp" },
