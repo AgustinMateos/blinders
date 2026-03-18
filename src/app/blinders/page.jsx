@@ -134,7 +134,7 @@ export default function AboutUs() {
         >
           {sliderImages.map((src, index) => (
             <div key={index} className="w-[300px] h-[400px] md:w-[500px] md:h-[500px] flex-shrink-0 rounded-md overflow-hidden">
-              <Image src={src} alt={`Slide ${index + 1}`} width={500} height={500} className="w-full h-full object-cover" />
+              <Image src={src} alt={`Slide ${index + 1}`} priority width={500} height={500} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>

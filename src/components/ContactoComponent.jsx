@@ -154,7 +154,7 @@ export default function ContactoComponent() {
                 onChange={(e) =>
                   setFormData({ ...formData, nombre: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-black/40 border border-gray-600 rounded-lg text-white text-base placeholder:text-gray-500 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
+                className="w-full px-4 py-3 bg-black/40 border border-[#222626] rounded-lg text-white text-base placeholder:text-[#5E5E5E] focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
                 placeholder="Nombre"
               />
             </div>
@@ -171,7 +171,7 @@ export default function ContactoComponent() {
                 onChange={(e) =>
                   setFormData({ ...formData, telefono: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-black/40 border border-gray-600 rounded-lg text-white text-base placeholder:text-gray-500 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
+                className="w-full px-4 py-3 bg-black/40 border border-[#222626] rounded-lg text-white text-base placeholder:text-[#5E5E5E] focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
                 placeholder="+54 9 11111111"
               />
             </div>
@@ -188,7 +188,7 @@ export default function ContactoComponent() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-black/40 border border-gray-600 rounded-lg text-white text-base placeholder:text-gray-500 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
+                className="w-full px-4 py-3 bg-black/40 border border-[#222626] rounded-lg text-white text-base placeholder:text-[#5E5E5E] focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200"
                 placeholder="nombre@ejemplo.com"
               />
             </div>
@@ -205,7 +205,7 @@ export default function ContactoComponent() {
                   className="
                     w-full px-4 py-3 
                     bg-black/40 
-                    border border-gray-600 
+                    border border-[#222626]
                     rounded-lg 
                     text-white text-base text-left
                     focus:outline-none 
@@ -217,7 +217,7 @@ export default function ContactoComponent() {
                 >
                   <span
                     className={
-                      formData.tipoProyecto ? "text-white" : "text-gray-500"
+                      formData.tipoProyecto ? "text-white" : "text-[#5E5E5E]"
                     }
                   >
                     {selectedOption.label}
@@ -244,7 +244,7 @@ export default function ContactoComponent() {
                   <div
                     className="
                       absolute z-50 mt-1 w-full 
-                      bg-[#0f0f0f] border border-gray-600 
+                      bg-[#0f0f0f] border border-[#222626] 
                       rounded-lg shadow-2xl max-h-60 overflow-y-auto
                     "
                   >
@@ -279,7 +279,7 @@ export default function ContactoComponent() {
 
             {/* Mensaje */}
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">
+              <label className="block text-sm font-medium mb-2 text-[#F2F2F2]">
                 Mensaje
               </label>
               <textarea
@@ -288,7 +288,7 @@ export default function ContactoComponent() {
                 onChange={(e) =>
                   setFormData({ ...formData, mensaje: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-black/40 border border-gray-600 rounded-lg text-white text-base placeholder:text-gray-500 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200 resize-none min-h-[120px]"
+                className="w-full px-4 py-3 bg-black/40 border border-[#222626] rounded-lg text-white text-base placeholder:text-[#5E5E5E] focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all duration-200 resize-none min-h-[120px]"
                 placeholder="Agrega un mensaje..."
               />
             </div>
@@ -311,7 +311,7 @@ export default function ContactoComponent() {
           </div>
 
           {/* Redes y contacto */}
-          <div className="w-auto flex flex-col py-10 space-y-4 border-t-2 border-[#262626]">
+          <div className="w-auto flex flex-col py-10 space-y-4 border-t-2 border-[#222626]">
             <div className="flex space-x-4">
               {socialLinks.map((link, index) => (
                 <a
