@@ -1,4 +1,4 @@
-// src/app/contacto/CustomDropdown.jsx  (o donde prefieras colocarlo)
+
 
 "use client"; // Necesario porque usa useState y useEffect
 
