@@ -304,10 +304,46 @@ export const projects = {
   ],
   corp: [
     {
-      id: 'art1',
-      title: 'Art Project 1',
-      cover: '/images/art1-cover.jpg',
-      videoUrl: 'https://www.youtube.com/embed/yetAnotherVideoID', // Replace with actual embed URL
+      id: 'project1',
+      title: 'KOSMIC KOUTURE ft RANDAL',
+      tipo:'Contenido documental de marca',
+      cover: '/proyectos/portadas/corp/KosmicRandal.jpg',
+      videoUrl: 'https://www.youtube.com/embed/jX21sOmg4mY?si=lNUWx5J4OGMTaMai', // Replace with actual embed URL
+    },
+     {
+      id: 'project2',
+      title: 'ENDURO DE INVIERNO ft MONSTER ENERGY',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/KosmicRandal.jpg',
+      videoUrl: 'https://player.vimeo.com/video/1141500603?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
+    },
+     {
+      id: 'project3',
+      title: 'DESTINO ARENA EN MADERO BOARDWALK',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/KosmicRandal.jpg',
+      videoUrl: 'https://player.vimeo.com/video/1141503255?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+    },
+      {
+      id: 'project4',
+      title: 'MONSTER ENERGY ft SOUTHFIT',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/KosmicRandal.jpg',
+      videoUrl: 'https://player.vimeo.com/video/1141507089?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
+    },
+     {
+      id: 'project5',
+      title: 'STÖESSEL ft TANQUERAY',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/KosmicRandal.jpg',
+      videoUrl: 'https://player.vimeo.com/video/1141510356?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
+    },
+    {
+      id: 'project6',
+      title: 'FISERV ft LASAIGUES',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/KosmicRandal.jpg',
+      videoUrl: 'https://player.vimeo.com/video/1141514151?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
     },
   ],
 };
