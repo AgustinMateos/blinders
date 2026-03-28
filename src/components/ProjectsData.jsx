@@ -380,5 +380,54 @@ export const projects = {
       cover: '/proyectos/portadas/corp/PROCYONft1XBET.webp',
       videoUrl: 'https://player.vimeo.com/video/1141548549?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
     },
+    {
+      id: 'project12',
+      title: 'MONSTER ENERGY ft VULK - TRICK ASSAULT',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/MONSTERENERGYftVULK-TRICKASSAULT.webp',
+      videoUrl: 'https://player.vimeo.com/video/1141551099?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
+    },
+     {
+      id: 'project13',
+      title: 'BULLPADEL ft PREMIER PADEL',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/BULLPADELftPREMIERPADEL.webp',
+      videoUrl: 'https://player.vimeo.com/video/1141553388?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
+    },
+    {
+      id: 'project14',
+      title: 'ACELERANDO POR UN SUEÑO ',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/ACELERANDOPORUNSUEÑO.webp',
+      videoUrl: 'https://player.vimeo.com/video/1141557264?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
+    },
+     {
+      id: 'project15',
+      title: 'NOMADE - CHAPTER 10',
+      tipo:'Contenido promocional de marca/evento',
+      cover: '/proyectos/portadas/corp/NOMADE-CHAPTER10.webp',
+      videoUrl: 'https://player.vimeo.com/video/1141557264?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
+    },
+     {
+      id: 'project16',
+      title: 'TOMÁS MAZZA - DOCUMENTAL CAPÍTULO 1',
+      tipo:'Documental',
+      cover: '/proyectos/portadas/corp/TOMASMAZZA.webp',
+      videoUrl: 'https://www.youtube.com/embed/WlDpKDCX_rA?si=w2RYw3gY3yUV4ECL', 
+    },
+    {
+      id: 'project17',
+      title: 'TOMÁS MAZZA - DOCUMENTAL CAPÍTULO 2',
+      tipo:'Documental',
+      cover: '/proyectos/portadas/corp/TOMASMAZZA2.webp',
+      videoUrl: 'https://www.youtube.com/embed/sEa8dmepEOY?si=6xp53qo43jE19hb2', 
+    },
+    {
+      id: 'project18',
+      title: 'TOMÁS MAZZA - DOCUMENTAL CAPÍTULO 3',
+      tipo:'Documental',
+      cover: '/proyectos/portadas/corp/TOMASMAZZA3.webp',
+      videoUrl: 'https://www.youtube.com/embed/rEzr8Jks59E?si=VJvJOZbyR-4SZAQh', 
+    },
   ],
 };
