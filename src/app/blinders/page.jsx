@@ -77,7 +77,7 @@ export default function AboutUs() {
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div className="  h-[70vh] md:h-[690px] w-[798px]">
             <Image
-              src="/blinders/blinders-aboutus.svg"
+              src="/blinders/blinders-aboutus.webp"
               alt="Blinders About Us"
               width={798}
               priority
