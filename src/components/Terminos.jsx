@@ -501,7 +501,7 @@ const Terminos = () => {
 
         {/* Fecha de actualización */}
         <p className="mt-8 mb-10 text-gray-400 text-center md:text-left">
-          Última actualización: [colocar fecha de publicación]
+          Última actualización: 7 de abril de 2026
         </p>
 
         {/* Acordeón */}
