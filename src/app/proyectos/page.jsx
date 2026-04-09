@@ -20,7 +20,7 @@ export default function Proyectos() {
 
   return (
     <div className="bg-black pt-[80px]">
-      <div className="w-full pl-[10px] pt-[24px] mx-1 h-[100px] md:h-[139px] border-[#222626] border-t-[0.5px] border-b-[0.5px] flex items-center justify-start">
+      <div className="w-full pl-[10px] pt-[24px] md:mx-1 h-[100px] md:h-[139px] border-[#222626] border-t-[0.5px] border-b-[0.5px] flex items-center justify-start">
         <h1
           style={{
             fontFamily: 'Big Shoulders, sans-serif',
@@ -70,10 +70,10 @@ export default function Proyectos() {
               <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-[12px] transition-all duration-300" />
 
               {/* Project title */}
-              <p className="absolute uppercase font-dm-mono bottom-[80px] md:bottom-[95px] left-3 right-0 text-amber-50 py-2 z-10" >
+              <p className="absolute p-[15px] pb-6 md:pb-0 md:p-0  uppercase font-dm-mono bottom-[80px] md:bottom-[95px] left-3 right-0 text-amber-50 py-2 z-10" >
                 {project.tipo}
               </p>
-              <p className="absolute font-black bottom-[30px] h-[70px] left-3 right-0 font-archivo text-[#FFFFFF] text-[24px] leading-[100%] tracking-[0] py-2 z-10 " style={{fontWeight:'700px'}}>
+              <p className="absolute p-[15px] md:p-0 font-black bottom-[30px] h-[70px] left-3 right-0 font-archivo text-[#FFFFFF] text-[24px] leading-[100%] tracking-[0] py-2 z-10 " style={{fontWeight:'700px'}}>
                 {project.title}
               </p>
 
