@@ -51,7 +51,7 @@ const Navbar = () => {
 
             {/* Navigation Links (Full-screen Dropdown) */}
             <div
-                className={`fixed left-0 w-full bg-black bg-opacity-90 transition-transform duration-500 ease-in-out transform ${isOpen ? "translate-y-0" : "-translate-y-full"
+                className={`fixed left-0 w-full pb-[30px] md:pb-0 bg-black bg-opacity-90 transition-transform duration-500 ease-in-out transform ${isOpen ? "translate-y-0" : "-translate-y-full"
                     } top-0 h-screen flex flex-col justify-end items-end pr-5 z-40`}
             >
                 {/* Logo/Brand in Dropdown */}
@@ -75,7 +75,7 @@ const Navbar = () => {
                 </button>
 
                 {/* Menu Links */}
-                <div className="border-b-[1px] md:w-[295px] border-[#F2F2F280] flex flex-col justify-end items-end">
+                <div className="border-b-[1px]  md:w-[295px] border-[#F2F2F280] flex flex-col justify-end items-end">
                     <Link
                         href="/"
                         className="block font-archivo font-medium px-4 py-4  text-white hover:text-gray-300  text-[32px] md:text-[64px] leading-[100%] tracking-[0]"

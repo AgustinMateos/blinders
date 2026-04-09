@@ -27,7 +27,14 @@ const dmMono = DM_Mono({
   display: 'swap',
 });
 
-export const metadata = { /* ... */ };
+export const metadata = {
+  title: "Blinders",
+  description: "Tu descripción",
+  
+  // Google Site Verification
+  verification: {
+    google: "kSuw1kcLdD1gz5vqGBOsuGPNUEjG9h38t56dqwR6bFM",
+  }}
 
 export default function RootLayout({ children }) {
   return (
