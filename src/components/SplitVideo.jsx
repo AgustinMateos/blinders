@@ -430,7 +430,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             style={{ margin: "0 1rem", display: "block" }}
           />
           <a
-            href="/artistas"
+            href="/proyectos#corp"
             style={{
               color: position < 50 ? "red" : position === 50 ? "#FFFFFF" : "white",
               textDecoration: "none",
