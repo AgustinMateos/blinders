@@ -7,34 +7,34 @@ import Image from 'next/image';
 import { BigShoulders } from '../ui/fonts';
 
 export default function Proyectos() {
-  const [selectedCategory, setSelectedCategory] = useState('art');
+  // Obtenemos el hash de forma síncrona antes del primer render
+  const getInitialCategory = () => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      return hash === 'corp' ? 'corp' : 'art';
+    }
+    return 'art';
+  };
 
-  // Leer el hash de la URL (#art o #corp) al cargar la página
+  const [selectedCategory, setSelectedCategory] = useState(getInitialCategory);
+
+  // Solo actualizamos si el hash cambia después (por ejemplo, navegación interna)
   useEffect(() => {
     const hash = window.location.hash.replace('#', '').toLowerCase();
-
-    if (hash === 'corp') {
-      setSelectedCategory('corp');
-    } else {
-      // Por defecto 'art' (si es #art, vacío o cualquier otra cosa)
-      setSelectedCategory('art');
+    const newCategory = hash === 'corp' ? 'corp' : 'art';
+    
+    if (newCategory !== selectedCategory) {
+      setSelectedCategory(newCategory);
     }
-  }, []);
+  }, []); // solo una vez
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-
-    // Actualizar el hash en la URL sin recargar la página
-    window.history.replaceState(
-      null,
-      '',
-      `/proyectos#${category}`
-    );
+    window.history.replaceState(null, '', `/proyectos#${category}`);
   };
 
-  const currentProjects = projects[selectedCategory];
+  const currentProjects = projects[selectedCategory] || [];
   const categoryLabel = selectedCategory === 'art' ? 'Artistas' : 'Empresas';
-
   return (
     <div className="bg-black pt-[80px]">
       {/* Header con título */}
@@ -86,6 +86,7 @@ export default function Proyectos() {
         {currentProjects.map((project) => (
           <Link
             key={project.id}
+            prefetch={true}
             href={`/proyectos/${selectedCategory}/${project.id}`}
           >
             <div

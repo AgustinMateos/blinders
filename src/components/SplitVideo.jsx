@@ -291,7 +291,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
           >
             <a
               className="flex w-auto"
-              href={currentImage === "left" ? "/proyectos" : "/proyectos"}
+              href={currentImage === "left" ? "/proyectos" : "/proyectos#corp"}
               style={{
                 color: "white",
                 textDecoration: "none",
