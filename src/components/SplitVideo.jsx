@@ -303,8 +303,11 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
                 color: "#ffffff",
               }}
             >
-              <p>VER</p>
-              <Image src={'/flechaup.svg'} width={30} alt="flecha" height={30} />
+              <p  style={{
+                  fontFamily: "Big Shoulders, sans-serif",
+                  fontWeight: "700",
+                }}>VER</p>
+              <Image src={'/flechaup.svg'} width={20} alt="flecha" height={20} />
             </a>
           </div>
         </div>
