@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const TO_EMAIL = "agustinrotondomateos@gmail.com";
+const TO_EMAIL = "blinders.av@gmail.com";
 const LOGO_URL =
   "https://res.cloudinary.com/duq7xuzmo/image/upload/v1777580644/SubtractRed_ygro73.png";
 const FOOTER_LOGO_URL =
