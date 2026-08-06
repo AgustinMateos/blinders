@@ -56,6 +56,8 @@ export default function ContactoComponent() {
     tipoProyecto: "",
     mensaje: "",
   });
+  const [submitStatus, setSubmitStatus] = useState("idle");
+  const [submitError, setSubmitError] = useState("");
 
   // Estado y lógica del dropdown integrado
   const [isOpen, setIsOpen] = useState(false);
@@ -88,6 +90,49 @@ export default function ContactoComponent() {
     options.find((opt) => opt.value === formData.tipoProyecto) || {
       label: "¿Qué tienes en mente?",
     };
+
+  const handleSubmit = async () => {
+    if (submitStatus === "sending") return;
+
+    if (!formData.nombre || !formData.telefono || !formData.email || !formData.mensaje) {
+      setSubmitStatus("error");
+      setSubmitError("Completá nombre, teléfono, email y mensaje.");
+      return;
+    }
+
+    setSubmitStatus("sending");
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "No se pudo enviar el mensaje.");
+      }
+
+      setSubmitStatus("sent");
+      setFormData({
+        nombre: "",
+        telefono: "",
+        email: "",
+        tipoProyecto: "",
+        mensaje: "",
+      });
+      setIsOpen(false);
+
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 2500);
+    } catch (error) {
+      setSubmitStatus("error");
+      setSubmitError(error.message || "No se pudo enviar el mensaje.");
+    }
+  };
 
   return (
     <div className="pt-20 px-4 md:px-4 bg-black w-full min-h-screen text-white">
@@ -303,17 +348,25 @@ export default function ContactoComponent() {
             <div className="flex flex-row justify-end items-center gap-3">
               <button
                 type="button"
-                onClick={() => console.log("Enviado:", formData)}
+                onClick={handleSubmit}
+                disabled={submitStatus === "sending"}
                 className="w-[112px] font-normal text-[32px] leading-none tracking-normal uppercase bg-transparent text-white hover:text-red-500 transition-colors"
                 style={{
                   fontFamily: "Big Shoulders, sans-serif",
                   fontWeight: "700",
                 }}
               >
-                ENVIAR
+                {submitStatus === "sending"
+                  ? "ENVIANDO"
+                  : submitStatus === "sent"
+                  ? "ENVIADO"
+                  : "ENVIAR"}
               </button>
               <Image src="/flecha.svg" width={30} height={30} alt="flecha" />
             </div>
+            {submitStatus === "error" && (
+              <p className="text-sm text-red-500 text-right">{submitError}</p>
+            )}
           </div>
 
           {/* Redes y contacto */}
@@ -345,5 +398,4 @@ export default function ContactoComponent() {
         </div>
       </div>
     </div>
-  );
-}
+  );}
