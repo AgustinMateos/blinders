@@ -328,7 +328,7 @@ export const projects = {
       id: 'project4',
       title: 'MONSTER ENERGY ft SOUTHFIT',
       tipo:'Contenido promocional de marca/evento',
-      cover: '/proyectos/portadas/corp/STÖESSELftTANQUERAY.webp',
+      cover: '/proyectos/portadas/corp/STOESSELftTANQUERAY.webp',
       videoUrl: 'https://player.vimeo.com/video/1141507089?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', // Replace with actual embed URL
     },
      {

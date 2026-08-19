@@ -99,7 +99,7 @@ export default function Proyectos() {
               <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-[12px] transition-all duration-300" />
 
               {/* Tipo de proyecto */}
-              <p className="absolute p-[15px] pb-6 md:pb-0 md:p-0 uppercase font-dm-mono bottom-[80px] md:bottom-[95px] left-3 right-0 text-amber-50 py-2 z-10">
+              <p className="absolute p-[15px] pb-6 md:pb-4 md:p-0 uppercase font-dm-mono bottom-[80px] md:bottom-[95px] left-3 right-0 text-amber-50 py-2 z-10">
                 {project.tipo}
               </p>
 
