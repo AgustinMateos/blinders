@@ -398,4 +398,5 @@ export default function ContactoComponent() {
         </div>
       </div>
     </div>
-  );}
+  );
+}
