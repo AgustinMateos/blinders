@@ -225,6 +225,34 @@ export const projects = {
       cover: '/proyectos/portadas/artistas/perreitotriste3.webp',
       videoUrl: 'https://www.youtube.com/embed/opvIRrx_3P4?si=x30nFTXFEDkOTdGC', // Replace with actual embed URL
     },
+    {
+      id: 'project33',
+      title: 'Sammer x Khea - LLAMARTE REMIX',
+      tipo:'VIDEOCLIP',
+      cover: '/proyectos/portadas/artistas/sammer.webp',
+      videoUrl: 'https://www.youtube.com/embed/Tr2Y9hBtTjE?si=NSeqRCUHQJogPoJs', // Replace with actual embed URL
+    },
+    {
+      id: 'project34',
+      title: 'FALKE 912 - ESA ES LA ACTITUD',
+      tipo:'VIDEOCLIP',
+      cover: '/proyectos/portadas/artistas/falkeesaeslaactitud.webp',
+      videoUrl: "https://www.youtube.com/embed/ya6Sj6oxB-U?si=WgLO4BgmJU5wq32z", // Replace with actual embed URL
+    },
+    {
+      id: 'project35',
+      title: 'LIL TROCA - MALO ',
+      tipo:'VIDEOCLIP',
+      cover: '/proyectos/portadas/artistas/liltroca-malo.webp',
+      videoUrl: 'https://www.youtube.com/embed/agL_UuHa5Tw?si=mxLxasyDCMs8hA6f', // Replace with actual embed URL
+    },
+     {
+      id: 'project36',
+      title: 'Lil Troca - Prime Time',
+      tipo:'VIDEOCLIP',
+      cover: '/proyectos/portadas/artistas/liltrocaprimetime.webp',
+      videoUrl: 'https://www.youtube.com/embed/nttMhchjMx0?si=GL8rdFRLeRv6h_9e', // Replace with actual embed URL
+    },
     //  {
     //   id: 'project33',
     //   title: 'ETERNOS RETORNOS - KERSE',
