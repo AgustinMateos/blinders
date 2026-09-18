@@ -147,7 +147,7 @@ export default function AboutUs() {
         </div>
         <div className="flex w-full md:pt-[80px] flex-col md:flex-row pb-[80px]">
           <div className="flex flex-col w-full md:w-[50%] h-[700px] md:h-[1000px] border-b-[#EAD18F] border-b-[4px]">
-            <div className="bg-[url('/blinders/corp.svg')] h-[335px] md:h-[535px] w-full bg-contain bg-no-repeat md:bg-cover bg-center flex items-center justify-center">
+            <div className="bg-[url('/blinders/corp3.jpg')] h-[335px] md:h-[535px] w-full bg-contain bg-no-repeat md:bg-cover bg-center flex items-center justify-center">
               <Image src="/blinders/blinderscorp.svg" alt="Imagen interna corp" width={267} height={267}  className="max-h-[50%] max-w-[50%] object-contain h-[44px] w-[148px] md:h-[267px] md:w-[267px]" />
             </div>
             <div className="h-[320px] w-full flex flex-col justify-center items-center">
@@ -174,7 +174,7 @@ export default function AboutUs() {
                 </p>
               </div>
             </div>
-            <div className="bg-[url('/blinders/art.svg')] h-[352px] md:h-[535px] w-full bg-contain md:bg-cover bg-no-repeat bg-center flex items-center justify-center">
+            <div className="bg-[url('/blinders/art2.jpg')] h-[352px] md:h-[535px] w-full bg-contain md:bg-cover bg-no-repeat bg-center flex items-center justify-center">
               <Image src="/blinders/blindersart.svg" alt="Imagen interna art" width={267} height={267} className="max-h-[50%] max-w-[50%] object-contain h-[44px] w-[148px] md:h-[267px] md:w-[267px]" />
             </div>
           </div>
