@@ -1,44 +1,50 @@
-import { projects } from '../components/ProjectsData'; // Ajusta la ruta si es necesario
+import { projects } from '../components/ProjectsData';
+import { SITE, SERVICES } from '@/lib/seo';
 
+// No se usa lastModified con new Date(): cambiaría en cada request y Google
+// termina ignorando el campo. Si querés fechas reales, agregá updatedAt a cada proyecto.
 export default function sitemap() {
-  const sitemapEntries = [];
-
-  // Páginas estáticas principales
-  sitemapEntries.push(
+  const sitemapEntries = [
     {
-      url: 'https://blindersav.com',
-      lastModified: new Date(),
-      changeFrequency: 'daily',
+      url: SITE.url,
+      changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: 'https://blindersav.com/proyectos',
-      lastModified: new Date(),
+      url: `${SITE.url}/proyectos`,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // Páginas de servicio: videoclips para artistas / videos corporativos
+    ...Object.values(SERVICES).map((service) => ({
+      url: `${SITE.url}/proyectos/${service.slug}`,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })),
     {
-      url: 'https://blindersav.com/contacto',
-      lastModified: new Date(),
+      url: `${SITE.url}/blinders`,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: 'https://blindersav.com/terminos-y-condiciones',
-      lastModified: new Date(),
+      url: `${SITE.url}/contacto`,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE.url}/terminos-y-condiciones`,
       changeFrequency: 'yearly',
-      priority: 0.4,
-    }
-  );
+      priority: 0.3,
+    },
+  ];
 
-  // Agregar TODOS los proyectos dinámicos (art y corp)
+  // Todos los proyectos (art y corp)
   Object.keys(projects).forEach((category) => {
     projects[category].forEach((project) => {
       sitemapEntries.push({
-        url: `https://blindersav.com/proyectos/${category}/${project.id}`,
-        lastModified: new Date(),           // podés poner project.updatedAt si lo agregás después
+        url: `${SITE.url}/proyectos/${category}/${project.id}`,
         changeFrequency: 'monthly',
-        priority: 0.8,
+        priority: 0.6,
       });
     });
   });

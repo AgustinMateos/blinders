@@ -2,6 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import Terminos from '@/components/Terminos';
 
+export const metadata = {
+  title: 'Términos y condiciones',
+  description:
+    'Términos y condiciones de los servicios de producción audiovisual de Blinders Audiovisual: presupuestos, pagos, correcciones y propiedad intelectual.',
+  alternates: { canonical: '/terminos-y-condiciones' },
+};
+
 const termsAndConditions = [
   {
     id: 1,

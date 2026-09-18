@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { BigShoulders } from '../ui/fonts';
 import Image from 'next/image'; // Import the Image component
+import Link from 'next/link';
 
 export default function AboutUs() {
   const sliderRef = useRef(null);
@@ -134,21 +135,21 @@ export default function AboutUs() {
         >
           {sliderImages.map((src, index) => (
             <div key={index} className="w-[300px] h-[400px] md:w-[500px] md:h-[500px] flex-shrink-0 rounded-md overflow-hidden">
-              <Image src={src} alt={`Slide ${index + 1}`} priority width={500} height={500} className="w-full h-full object-cover" />
+              <Image src={src} alt={`Producción audiovisual de Blinders, imagen ${index + 1} de ${sliderImages.length}`} priority={index < 2} width={500} height={500} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
         <div className='mt-20 h-[274px] w-full bg-[url("/blinders/fondo.svg")] relative bg-cover bg-center'>
           <div className='h-full w-full flex items-center justify-center'>
-            <p className={`font-bold font-big-shoulders md:text-6xl md:leading-none md:tracking-normal md:text-center md:uppercase md:font-bold text-[40px] leading-[55px] tracking-[0%] text-center align-middle uppercase ${BigShoulders.className}`}>
+            <h2 className={`font-bold font-big-shoulders md:text-6xl md:leading-none md:tracking-normal md:text-center md:uppercase md:font-bold text-[40px] leading-[55px] tracking-[0%] text-center align-middle uppercase ${BigShoulders.className}`}>
               Un sólo equipo, dos formas de crear
-            </p>
+            </h2>
           </div>
         </div>
         <div className="flex w-full md:pt-[80px] flex-col md:flex-row pb-[80px]">
           <div className="flex flex-col w-full md:w-[50%] h-[700px] md:h-[1000px] border-b-[#EAD18F] border-b-[4px]">
             <div className="bg-[url('/blinders/corp3.jpg')] h-[335px] md:h-[535px] w-full bg-contain bg-no-repeat md:bg-cover bg-center flex items-center justify-center">
-              <Image src="/blinders/blinderscorp.svg" alt="Imagen interna corp" width={267} height={267}  className="max-h-[50%] max-w-[50%] object-contain h-[44px] w-[148px] md:h-[267px] md:w-[267px]" />
+              <Image src="/blinders/blinderscorp.svg" alt="Blinders Corp: videos corporativos para marcas y empresas" width={267} height={267}  className="max-h-[50%] max-w-[50%] object-contain h-[44px] w-[148px] md:h-[267px] md:w-[267px]" />
             </div>
             <div className="h-[320px] w-full flex flex-col justify-center items-center">
               <div className="h-[360px] md:h-[270px] w-[85%] flex flex-col justify-around">
@@ -159,6 +160,9 @@ export default function AboutUs() {
                   Trabajamos junto a instituciones, emprendimientos y grandes compañías para transformar ideas en contenido
                   audiovisual que impacta, comunica y genera resultados.
                 </p>
+                {/* <Link href="/proyectos/corp" className="font-dm-mono uppercase text-white underline underline-offset-4">
+                  Ver videos corporativos
+                </Link> */}
               </div>
             </div>
           </div>
@@ -172,10 +176,13 @@ export default function AboutUs() {
                   Producimos videoclips, shows y piezas visuales que acompañan a artistas a contar su historia con una estética
                   poderosa y emocional.
                 </p>
+                {/* <Link href="/proyectos/art" className="font-dm-mono uppercase text-white underline underline-offset-4">
+                  Ver videoclips para artistas
+                </Link> */}
               </div>
             </div>
             <div className="bg-[url('/blinders/art2.jpg')] h-[352px] md:h-[535px] w-full bg-contain md:bg-cover bg-no-repeat bg-center flex items-center justify-center">
-              <Image src="/blinders/blindersart.svg" alt="Imagen interna art" width={267} height={267} className="max-h-[50%] max-w-[50%] object-contain h-[44px] w-[148px] md:h-[267px] md:w-[267px]" />
+              <Image src="/blinders/blindersart.svg" alt="Blinders Art: videoclips para artistas" width={267} height={267} className="max-h-[50%] max-w-[50%] object-contain h-[44px] w-[148px] md:h-[267px] md:w-[267px]" />
             </div>
           </div>
         </div>

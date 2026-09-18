@@ -1,54 +1,78 @@
 // app/proyectos/[category]/[projectId]/page.jsx
-// (o el path exacto que uses)
-
-'use client'; // ← Solo si querés que TODO sea client-side (no recomendado para pages). Mejor: separa el player interactivo
-
-import { useState } from 'react';
 import Image from 'next/image';
-import { projects } from '../../../../components/ProjectsData'; // ajusta la ruta si es necesario
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { projects } from '@/components/ProjectsData';
+import VideoPlayer from '@/components/VideoPlayer';
+import JsonLd from '@/components/JsonLd';
+import {
+  SITE,
+  SERVICES,
+  absoluteUrl,
+  cleanTitle,
+  formatTipo,
+  getVideoInfo,
+} from '@/lib/seo';
+
+// Solo existen los proyectos cargados en ProjectsData
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return Object.keys(projects).flatMap((category) =>
+    projects[category].map((project) => ({ category, projectId: project.id }))
+  );
+}
+
+function getProject(category, projectId) {
+  return projects[category]?.find((p) => p.id === projectId);
+}
+
+// Descripción única por proyecto (la usan la meta description y el texto visible)
+function buildDescription(category, project) {
+  const title = cleanTitle(project.title);
+  if (category === 'art') {
+    return `Mirá ${title}, ${project.tipo.toLowerCase()} producido por Blinders Audiovisual. Videoclips y contenido audiovisual para artistas en Argentina.`;
+  }
+  return `${formatTipo(project.tipo)}: ${title}. Producción de videos corporativos y contenido de marca por Blinders Audiovisual en Argentina.`;
+}
+
+export async function generateMetadata({ params }) {
+  const { category, projectId } = await params;
+  const project = getProject(category, projectId);
+  if (!project) return { title: 'Proyecto no encontrado', robots: { index: false } };
+
+  const title = `${cleanTitle(project.title)} – ${formatTipo(project.tipo)}`;
+  const description = buildDescription(category, project);
+  const path = `/proyectos/${category}/${projectId}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: 'video.other',
+      url: path,
+      title,
+      description,
+      images: [{ url: project.cover, alt: cleanTitle(project.title) }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [project.cover],
+    },
+  };
+}
 
 export default async function VideoPage({ params }) {
-  // ¡Await aquí! Esto es clave en Next.js 15+
-  const resolvedParams = await params;
-  const { category, projectId } = resolvedParams;
-
-  const project = projects[category]?.find((p) => p.id === projectId);
-
-  if (!project) {
-    return (
-      <div className="text-white pt-[80px] text-center min-h-screen bg-black">
-        Proyecto no encontrado
-      </div>
-    );
-  }
+  const { category, projectId } = await params;
+  const project = getProject(category, projectId);
+  if (!project) notFound();
 
   // Logo según categoría
   const logoSrc = category === 'art' ? '/SubtractRed2.svg' : '/Subtract2.svg';
-  const logoAlt = category === 'art' ? 'Artista' : 'Corporativo';
-
-  // Extraer tipo e ID del video
- const getVideoInfo = (url) => {
-  if (!url) return { type: null, id: null };
-
-  // YouTube
-  if (url.includes('youtube.com') || url.includes('youtu.be')) {
-    const regex = new RegExp(
-      "(?:youtube(?:-nocookie)?\\.com\\/(?:[^/\\n\\s]+/\\S+\\/|(?:v|e(?:mbed)?)\\/|\\S*?[?&]v=)|youtu\\.be\\/)([a-zA-Z0-9_-]{11})",
-      "i"
-    );
-    const match = url.match(regex);
-    return { type: 'youtube', id: match ? match[1] : null };
-  }
-
-  // Vimeo
-  if (url.includes('vimeo.com')) {
-    const regex = /vimeo\.com\/(?:video\/)?(\d+)/i;
-    const match = url.match(regex);
-    return { type: 'vimeo', id: match ? match[1] : null };
-  }
-
-  return { type: null, id: null };
-};
+  const logoAlt = category === 'art' ? 'Blinders Art' : 'Blinders Corp';
 
   const { type: videoType, id: videoId } = getVideoInfo(project.videoUrl);
   const thumbnail = project.cover;
@@ -61,10 +85,53 @@ export default async function VideoPage({ params }) {
     );
   }
 
-  // Como useState no puede ir en async function (server component), 
-  // movemos la parte interactiva del video a un componente cliente separado
+  const service = SERVICES[category];
+  const title = cleanTitle(project.title);
+  const description = buildDescription(category, project);
+  const path = `/proyectos/${category}/${projectId}`;
+
+  const embedUrl =
+    videoType === 'youtube'
+      ? `https://www.youtube.com/embed/${videoId}`
+      : `https://player.vimeo.com/video/${videoId}`;
+  const contentUrl =
+    videoType === 'youtube'
+      ? `https://www.youtube.com/watch?v=${videoId}`
+      : `https://vimeo.com/${videoId}`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'VideoObject',
+        name: title,
+        description,
+        thumbnailUrl: [absoluteUrl(project.cover)],
+        embedUrl,
+        contentUrl,
+        inLanguage: 'es',
+        // uploadDate es obligatorio para los resultados enriquecidos de video de Google.
+        // Se incluye apenas se cargue `uploadDate: '2025-01-31'` en el proyecto de ProjectsData.
+        ...(project.uploadDate && { uploadDate: project.uploadDate }),
+        publisher: { '@id': `${SITE.url}/#organization` },
+        mainEntityOfPage: absoluteUrl(path),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE.url },
+          { '@type': 'ListItem', position: 2, name: 'Proyectos', item: absoluteUrl('/proyectos') },
+          { '@type': 'ListItem', position: 3, name: service.label, item: absoluteUrl(`/proyectos/${category}`) },
+          { '@type': 'ListItem', position: 4, name: title, item: absoluteUrl(path) },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="pt-[80px] bg-black min-h-screen">
+      <JsonLd data={jsonLd} />
+
       {/* Título + Logo */}
       <div className="border-t border-b border-[#262626] h-[120px] md:h-[139px] bg-black flex items-center justify-between px-4 md:px-8 overflow-hidden">
         <h1
@@ -102,57 +169,19 @@ export default async function VideoPage({ params }) {
         videoId={videoId}
         thumbnail={thumbnail}
       />
-    </div>
-  );
-}
 
-// Componente cliente para el video (con useState)
-function VideoPlayer({ project, videoType, videoId, thumbnail }) {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  return (
-    <div className="relative w-full max-w-8xl mx-auto mt-10 bg-black overflow-hidden shadow-2xl aspect-video">
-      {!isPlaying ? (
-        <div
-          className="absolute inset-0 cursor-pointer flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url(${thumbnail})` }}
-          onClick={() => setIsPlaying(true)}
-        >
-          <div className="z-10 w-20 h-20 md:w-28 md:h-28 flex items-center justify-center">
-            <Image
-              src="/play.svg"
-              alt="Play"
-              width={80}
-              height={80}
-              className="w-12 h-12 md:w-20 md:h-20 ml-2"
-            />
-          </div>
+      {/* Texto + enlaces internos hacia la página del servicio y contacto */}
+      {/* <div className="px-4 md:px-8 py-8 max-w-[900px] space-y-4 font-archivo text-[#EBEBEB] text-[16px] leading-[150%]">
+        <p>{description}</p>
+        <div className="flex flex-wrap gap-x-8 gap-y-3 font-dm-mono uppercase text-white">
+          <Link href={`/proyectos/${category}`} className="border-b border-white pb-1">
+            {category === 'art' ? 'Más videoclips para artistas' : 'Más videos corporativos'}
+          </Link>
+          <Link href="/contacto" className="border-b border-white pb-1">
+            Pedí tu presupuesto
+          </Link>
         </div>
-      ) : (
-        <>
-          {videoType === 'youtube' && (
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1`}
-              title={project.title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          )}
-
-          {videoType === 'vimeo' && (
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src={`https://player.vimeo.com/video/${videoId}?autoplay=1&autopause=0&title=0&byline=0&portrait=0`}
-              title={project.title}
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-              allowFullScreen
-            />
-          )}
-        </>
-      )}
+      </div> */}
     </div>
   );
 }

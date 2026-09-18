@@ -24,14 +24,14 @@ const Navbar = () => {
             {/* Logo/Brand */}
             <div className="flex items-center w-auto">
                 <Link href={"/"} className="flex items-center w-auto">
-                    <Image src="/Subtract.svg" alt="logo" width={30} height={30} />
-                    <h2 className="text-2xl font-bold pl-1">BLINDERS</h2>
+                    <Image src="/Subtract.svg" alt="Blinders Audiovisual" width={30} height={30} />
+                    <span className="text-2xl font-bold pl-1">BLINDERS</span>
                 </Link>
             </div>
 
             {/* Hamburger Icon */}
             <div className="flex items-center">
-                <button onClick={toggleMenu} className="focus:outline-none">
+                <button onClick={toggleMenu} aria-label={isOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={isOpen} className="focus:outline-none">
                     <div className="space-y-1.5">
                         <span
                             className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""
@@ -57,8 +57,8 @@ const Navbar = () => {
                 {/* Logo/Brand in Dropdown */}
                 <div className="absolute top-4 left-4 flex items-center">
                     <Link href={"/"} className="flex items-center w-auto">
-                        <Image src="/Subtract.svg" alt="logo" width={30} height={30} />
-                        <h2 className="text-2xl font-bold pl-1">BLINDERS</h2>
+                        <Image src="/Subtract.svg" alt="Blinders Audiovisual" width={30} height={30} />
+                        <span className="text-2xl font-bold pl-1">BLINDERS</span>
                     </Link>
                 </div>
 
