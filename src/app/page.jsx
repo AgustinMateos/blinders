@@ -14,10 +14,8 @@ export default function Home() {
       <h1 className="sr-only">
         Blinders Audiovisual: productora de videoclips para artistas y videos corporativos para marcas y empresas
       </h1>
-      <SplitVideo
-        videoLeftSrc="/artistasrr.mp4"
-        videoRightSrc="/corprr.mp4"
-      />
+      {/* En /public/home hay versión 1080p (desktop), 720p (mobile) y poster de cada video */}
+      <SplitVideo videoLeft="/home/artistas" videoRight="/home/corp" />
     </div>
   );
 }

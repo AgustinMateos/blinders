@@ -8,11 +8,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
 
-function SplitVideo({ videoLeftSrc, videoRightSrc }) {
+function SplitVideo({ videoLeft, videoRight }) {
   const leftVideoRef = useRef(null);
   const rightVideoRef = useRef(null);
   const [position, setPosition] = useState(50);
-  const [isMobile, setIsMobile] = useState(false);
+  // null hasta detectar el dispositivo: así no se descargan los videos de desktop en mobile
+  const [isMobile, setIsMobile] = useState(null);
   const [currentImage, setCurrentImage] = useState("left");
   const [showText, setShowText] = useState(true);
 
@@ -82,6 +83,10 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
     }
   }, [currentImage, isMobile]);
 
+  const quality = isMobile ? "720" : "1080";
+  const videoLeftSrc = `${videoLeft}-${quality}.mp4`;
+  const videoRightSrc = `${videoRight}-${quality}.mp4`;
+
   const handlePositionChange = (newPosition) => {
     setPosition(newPosition);
   };
@@ -108,6 +113,10 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
       />
     </div>
   );
+
+  if (isMobile === null) {
+    return <div style={{ backgroundColor: "black", width: "100vw", height: "100vh", position: "fixed", top: 0, left: 0 }} />;
+  }
 
   // Mobile and tablet view with Swiper
   if (isMobile) {
@@ -170,6 +179,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               <video
                 ref={leftVideoRef}
                 src={videoLeftSrc}
+                poster={`${videoLeft}-poster.webp`}
                 style={{
                   width: "100vw",
                   height: "100vh",
@@ -197,6 +207,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
               <video
                 ref={rightVideoRef}
                 src={videoRightSrc}
+                poster={`${videoRight}-poster.webp`}
                 style={{
                   width: "100vw",
                   height: "100vh",
@@ -208,7 +219,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload={currentImage === "right" ? "auto" : "metadata"}
               />
             </div>
           </SwiperSlide>
@@ -467,6 +478,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             <video
               ref={leftVideoRef}
               src={videoLeftSrc}
+              poster={`${videoLeft}-poster.webp`}
               style={{
                 width: "100vw",
                 height: "100vh",
@@ -494,6 +506,7 @@ function SplitVideo({ videoLeftSrc, videoRightSrc }) {
             <video
               ref={rightVideoRef}
               src={videoRightSrc}
+              poster={`${videoRight}-poster.webp`}
               style={{
                 width: "100vw",
                 height: "100vh",
