@@ -1,4 +1,7 @@
-export const projects = {
+// `id` es el identificador viejo (project1, project2...). Se mantiene solo para
+// redirigir las URLs antiguas; la URL pública usa `slug`, generado desde el título.
+// Para fijar un slug a mano, agregá `slug: 'mi-slug'` al proyecto.
+const rawProjects = {
   art: [
     {
       id: 'project1',
@@ -459,3 +462,20 @@ export const projects = {
     },
   ],
 };
+
+// 'CUANDO ELLA ME VIÓ - STANDLY' -> 'cuando-ella-me-vio-standly'
+export const slugify = (text = '') =>
+  text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+export const projects = Object.fromEntries(
+  Object.entries(rawProjects).map(([category, list]) => [
+    category,
+    list.map((project) => ({ ...project, slug: project.slug || slugify(project.title) })),
+  ])
+);

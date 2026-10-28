@@ -1,7 +1,7 @@
 // app/proyectos/[category]/[projectId]/page.jsx
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { projects } from '@/components/ProjectsData';
 import VideoPlayer from '@/components/VideoPlayer';
 import JsonLd from '@/components/JsonLd';
@@ -12,38 +12,42 @@ import {
   cleanTitle,
   formatTipo,
   getVideoInfo,
+  ogImageUrl,
+  projectCoverAlt,
+  projectDescription,
+  projectPath,
 } from '@/lib/seo';
 
 // Solo existen los proyectos cargados en ProjectsData
 export const dynamicParams = false;
 
+// Se generan las URLs nuevas (slug) y las viejas (project1...), que redirigen a la nueva.
 export function generateStaticParams() {
   return Object.keys(projects).flatMap((category) =>
-    projects[category].map((project) => ({ category, projectId: project.id }))
+    projects[category].flatMap((project) => [
+      { category, projectId: project.slug },
+      { category, projectId: project.id },
+    ])
   );
 }
 
-function getProject(category, projectId) {
-  return projects[category]?.find((p) => p.id === projectId);
+function getProject(category, slug) {
+  return projects[category]?.find((p) => p.slug === slug);
 }
 
-// Descripción única por proyecto (la usan la meta description y el texto visible)
-function buildDescription(category, project) {
-  const title = cleanTitle(project.title);
-  if (category === 'art') {
-    return `Mirá ${title}, ${project.tipo.toLowerCase()} producido por Blinders Audiovisual. Videoclips y contenido audiovisual para artistas en Argentina.`;
-  }
-  return `${formatTipo(project.tipo)}: ${title}. Producción de videos corporativos y contenido de marca por Blinders Audiovisual en Argentina.`;
+function getLegacyProject(category, id) {
+  return projects[category]?.find((p) => p.id === id);
 }
 
 export async function generateMetadata({ params }) {
   const { category, projectId } = await params;
-  const project = getProject(category, projectId);
+  const project = getProject(category, projectId) || getLegacyProject(category, projectId);
   if (!project) return { title: 'Proyecto no encontrado', robots: { index: false } };
 
   const title = `${cleanTitle(project.title)} – ${formatTipo(project.tipo)}`;
-  const description = buildDescription(category, project);
-  const path = `/proyectos/${category}/${projectId}`;
+  const description = projectDescription(category, project);
+  const path = projectPath(category, project);
+  const ogImage = ogImageUrl(project.cover);
 
   return {
     title,
@@ -54,13 +58,13 @@ export async function generateMetadata({ params }) {
       url: path,
       title,
       description,
-      images: [{ url: project.cover, alt: cleanTitle(project.title) }],
+      images: [{ url: ogImage, width: 1200, alt: projectCoverAlt(project) }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [project.cover],
+      images: [ogImage],
     },
   };
 }
@@ -68,7 +72,11 @@ export async function generateMetadata({ params }) {
 export default async function VideoPage({ params }) {
   const { category, projectId } = await params;
   const project = getProject(category, projectId);
-  if (!project) notFound();
+  if (!project) {
+    const legacy = getLegacyProject(category, projectId);
+    if (legacy) permanentRedirect(`/proyectos/${category}/${legacy.slug}`);
+    notFound();
+  }
 
   // Logo según categoría
   const logoSrc = category === 'art' ? '/SubtractRed2.svg' : '/Subtract2.svg';
@@ -87,8 +95,8 @@ export default async function VideoPage({ params }) {
 
   const service = SERVICES[category];
   const title = cleanTitle(project.title);
-  const description = buildDescription(category, project);
-  const path = `/proyectos/${category}/${projectId}`;
+  const description = projectDescription(category, project);
+  const path = projectPath(category, project);
 
   const embedUrl =
     videoType === 'youtube'

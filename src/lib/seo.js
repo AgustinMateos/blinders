@@ -81,6 +81,26 @@ export const formatTipo = (tipo = '') => {
 
 export const cleanTitle = (title = '') => title.replace(/\s+/g, ' ').trim();
 
+export const projectPath = (category, project) => `/proyectos/${category}/${project.slug}`;
+
+// Descripción única por proyecto (meta description, JSON-LD y sitemap de videos)
+export function projectDescription(category, project) {
+  const title = cleanTitle(project.title);
+  if (category === 'art') {
+    return `Mirá ${title}, ${project.tipo.toLowerCase()} producido por Blinders Audiovisual. Videoclips y contenido audiovisual para artistas en Argentina.`;
+  }
+  return `${formatTipo(project.tipo)}: ${title}. Producción de videos corporativos y contenido de marca por Blinders Audiovisual en Argentina.`;
+}
+
+// Alt de la portada: lo indexa Google Imágenes
+export const projectCoverAlt = (project) =>
+  `${cleanTitle(project.title)} – ${formatTipo(project.tipo)} de Blinders Audiovisual`;
+
+// Las portadas originales pesan varios MB (WhatsApp, Facebook y LinkedIn no muestran
+// la vista previa si la imagen es muy pesada). Para OG se usa la versión optimizada por Next.
+export const ogImageUrl = (src, width = 1200) =>
+  `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
+
 // Devuelve { type: 'youtube' | 'vimeo', id } o { type: null, id: null }
 export function getVideoInfo(url) {
   if (!url) return { type: null, id: null };

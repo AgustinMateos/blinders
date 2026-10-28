@@ -30,3 +30,34 @@
 }
 
 
+
+/* Loader inicial */
+.loader-logo {
+  animation: loader-pulse 1.4s ease-in-out infinite;
+}
+
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: #fff;
+  animation: loader-slide 1.1s ease-in-out infinite;
+}
+
+@keyframes loader-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.94); }
+}
+
+@keyframes loader-slide {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(250%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-logo,
+  .loader-bar::after {
+    animation: none;
+  }
+}

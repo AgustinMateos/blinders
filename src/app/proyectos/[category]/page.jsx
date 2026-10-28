@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { projects } from '@/components/ProjectsData';
 import JsonLd from '@/components/JsonLd';
 import { BigShoulders } from '@/app/ui/fonts';
-import { SITE, SERVICES, absoluteUrl, cleanTitle } from '@/lib/seo';
+import { SITE, SERVICES, absoluteUrl, cleanTitle, projectCoverAlt } from '@/lib/seo';
 
 // Solo existen /proyectos/art y /proyectos/corp
 export const dynamicParams = false;
@@ -55,7 +55,7 @@ export default async function CategoryPage({ params }) {
           itemListElement: list.map((project, i) => ({
             '@type': 'ListItem',
             position: i + 1,
-            url: absoluteUrl(`${path}/${project.id}`),
+            url: absoluteUrl(`${path}/${project.slug}`),
             name: cleanTitle(project.title),
           })),
         },
@@ -112,15 +112,20 @@ export default async function CategoryPage({ params }) {
         Proyectos de {service.label.toLowerCase()} de Blinders Audiovisual
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3">
-        {list.map((project) => (
-          <Link key={project.id} href={`${path}/${project.id}`}>
-            <div
-              className="relative cursor-pointer bg-cover bg-center h-[460px] group transition-all duration-300"
-              style={{
-                backgroundImage: `linear-gradient(180deg, #000000 0%, rgba(0,0,0,0) 50%, #000000 100%), url(${project.cover})`,
-              }}
-            >
-              <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-[12px] transition-all duration-300" />
+        {list.map((project, i) => (
+          <Link key={project.slug} href={`${path}/${project.slug}`}>
+            <div className="relative cursor-pointer h-[460px] overflow-hidden group">
+              {/* Portada optimizada: Next la sirve al tamaño justo y la carga cuando entra en pantalla */}
+              <Image
+                src={project.cover}
+                alt={projectCoverAlt(project)}
+                fill
+                sizes="(min-width: 768px) 33vw, 100vw"
+                priority={i < 3}
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,#000000_0%,rgba(0,0,0,0)_50%,#000000_100%)]" />
+              <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <p className="absolute p-[15px] pb-6 md:pb-4 md:p-0 uppercase font-dm-mono bottom-[80px] md:bottom-[95px] left-3 right-0 text-amber-50 py-2 z-10">
                 {project.tipo}

@@ -1,5 +1,22 @@
 import { projects } from '../components/ProjectsData';
-import { SITE, SERVICES } from '@/lib/seo';
+import {
+  SITE,
+  SERVICES,
+  absoluteUrl,
+  cleanTitle,
+  getVideoInfo,
+  projectDescription,
+  projectPath,
+} from '@/lib/seo';
+
+// Next no escapa el texto de imágenes y videos del sitemap: un '&' (DREAMS&LOVE) rompe el XML
+const xml = (text) =>
+  text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
 
 // No se usa lastModified con new Date(): cambiaría en cada request y Google
 // termina ignorando el campo. Si querés fechas reales, agregá updatedAt a cada proyecto.
@@ -38,13 +55,32 @@ export default function sitemap() {
     },
   ];
 
-  // Todos los proyectos (art y corp)
+  // Todos los proyectos (art y corp), con su portada y su video para Google Imágenes y Videos
   Object.keys(projects).forEach((category) => {
     projects[category].forEach((project) => {
+      const { type, id } = getVideoInfo(project.videoUrl);
+      const playerLoc =
+        type === 'youtube'
+          ? `https://www.youtube.com/embed/${id}`
+          : type === 'vimeo'
+            ? `https://player.vimeo.com/video/${id}`
+            : null;
+
       sitemapEntries.push({
-        url: `${SITE.url}/proyectos/${category}/${project.id}`,
+        url: absoluteUrl(projectPath(category, project)),
         changeFrequency: 'monthly',
         priority: 0.6,
+        images: [xml(absoluteUrl(project.cover))],
+        ...(playerLoc && {
+          videos: [
+            {
+              title: xml(cleanTitle(project.title)),
+              thumbnail_loc: xml(absoluteUrl(project.cover)),
+              description: xml(projectDescription(category, project)),
+              player_loc: playerLoc,
+            },
+          ],
+        }),
       });
     });
   });

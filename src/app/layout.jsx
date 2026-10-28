@@ -2,6 +2,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import JsonLd from "@/components/JsonLd";
+import Loader from "@/components/Loader";
 import { SITE, SERVICES, absoluteUrl } from "@/lib/seo";
 
 import { Archivo, Big_Shoulders, DM_Mono } from 'next/font/google';  // ← prueba Big_Shoulders sin _Display
@@ -136,6 +137,10 @@ export default function RootLayout({ children }) {
           bg-[#0a0a0a] text-white antialiased
         `}
       >
+        <noscript>
+          <style>{`#blinders-loader{display:none}`}</style>
+        </noscript>
+        <Loader />
         <JsonLd data={organizationJsonLd} />
         <header><Navbar /></header>
         {children}

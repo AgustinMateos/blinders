@@ -13,13 +13,20 @@ export default function VideoPlayer({ project, videoType, videoId, thumbnail }) 
           role="button"
           tabIndex={0}
           aria-label={`Reproducir ${project.title.trim()}`}
-          className="absolute inset-0 cursor-pointer flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url(${thumbnail})` }}
+          className="absolute inset-0 cursor-pointer flex items-center justify-center"
           onClick={() => setIsPlaying(true)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') setIsPlaying(true);
           }}
         >
+          <Image
+            src={thumbnail}
+            alt={`Portada de ${project.title.trim()}`}
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
+          />
           <div className="z-10 w-20 h-20 md:w-28 md:h-28 flex items-center justify-center">
             <Image
               src="/play.svg"

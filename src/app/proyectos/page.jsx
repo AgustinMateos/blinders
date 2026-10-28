@@ -5,6 +5,7 @@ import { projects } from '../../components/ProjectsData';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BigShoulders } from '../ui/fonts';
+import { projectCoverAlt } from '@/lib/seo';
 
 export default function Proyectos() {
   // Obtenemos el hash de forma síncrona antes del primer render
@@ -83,20 +84,24 @@ export default function Proyectos() {
 
       {/* Grid de proyectos */}
       <div className="grid grid-cols-1 md:grid-cols-3">
-        {currentProjects.map((project) => (
+        {currentProjects.map((project, i) => (
           <Link
-            key={project.id}
-            prefetch={true}
-            href={`/proyectos/${selectedCategory}/${project.id}`}
+            key={project.slug}
+            href={`/proyectos/${selectedCategory}/${project.slug}`}
           >
-            <div
-              className="relative cursor-pointer bg-cover bg-center h-[460px] group transition-all duration-300"
-              style={{
-                backgroundImage: `linear-gradient(180deg, #000000 0%, rgba(0,0,0,0) 50%, #000000 100%), url(${project.cover})`,
-              }}
-            >
+            <div className="relative cursor-pointer h-[460px] overflow-hidden group">
+              {/* Portada optimizada: Next la sirve al tamaño justo y la carga cuando entra en pantalla */}
+              <Image
+                src={project.cover}
+                alt={projectCoverAlt(project)}
+                fill
+                sizes="(min-width: 768px) 33vw, 100vw"
+                priority={i < 3}
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,#000000_0%,rgba(0,0,0,0)_50%,#000000_100%)]" />
               {/* Overlay al hacer hover */}
-              <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-[12px] transition-all duration-300" />
+              <div className="absolute inset-0 bg-[#000000cc] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Tipo de proyecto */}
               <p className="absolute p-[15px] pb-6 md:pb-4 md:p-0 uppercase font-dm-mono bottom-[80px] md:bottom-[95px] left-3 right-0 text-amber-50 py-2 z-10">
